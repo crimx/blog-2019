@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+
+/*------------------------------------*\
+  #LIBS
+\*------------------------------------*/
+
+// Set Bulma brand colors with Nord palettes
+// $black: ;
+// $black-bis: ;
+// $black-ter: ;
+$grey-darker: #2E3440;
+$grey-dark: #3B4252;
+$grey: #434C5E;
+$grey-light: #4C566A;
+$grey-lighter: #D8DEE9;
+$white-ter: #E5E9F0;
+$white-bis: #ECEFF4;
+// $white: ;
+$orange: #D08770;
+$yellow: #EBCB8B;
+$green: #A3BE8C;
+$turquoise: #88C0D0;
+$cyan: #81A1C1;
+$blue: #5E81AC;
+$purple: #B48EAD;
+$red: #BF616A;
+
+// Bulma Components
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/components/navbar.sass";
+@import "~bulma/sass/layout/section.sass";
+@import "~bulma/sass/elements/title.sass";
+

@@ -1,0 +1,49 @@
+{
+  "name": "blog.crimx.com",
+  "description": "CRIMX's frontend blog for 2019",
+  "homepage": "https://blog.crimx.com",
+  "author": "CRIMX",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bulma": "^0.7.4",
+    "gatsby": "^2.3.3",
+    "gatsby-image": "^2.0.23",
+    "gatsby-plugin-netlify": "^2.0.6",
+    "gatsby-plugin-netlify-cms": "^3.0.9",
+    "gatsby-plugin-react-helmet": "^3.0.4",
+    "gatsby-plugin-sass": "^2.0.7",
+    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-remark-copy-linked-files": "^2.0.7",
+    "gatsby-remark-images": "^3.0.1",
+    "gatsby-remark-relative-images": "^0.2.2",
+    "gatsby-source-filesystem": "^2.0.23",
+    "gatsby-transformer-remark": "^2.1.15",
+    "gatsby-transformer-sharp": "^2.1.9",
+    "lodash": "^4.17.5",
+    "lodash-webpack-plugin": "^0.11.4",
+    "netlify-cms": "^2.8.0",
+    "node-sass": "^4.11.0",
+    "parcel-bundler": "^1.12.3",
+    "prop-types": "^15.6.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-helmet": "^5.2.0",
+    "uuid": "^3.2.1"
+  },
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "start": "npm run develop",
+    "clean": "rimraf .cache public",
+    "build": "npm run clean && gatsby build",
+    "develop": "npm run clean && gatsby develop",
+    "serve": "gatsby serve",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2"
+  }
+}
