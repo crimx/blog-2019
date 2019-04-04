@@ -11,7 +11,7 @@
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-netlify": "^2.0.6",
     "gatsby-plugin-netlify-cms": "^3.0.9",
-    "gatsby-plugin-react-helmet": "^3.0.4",
+    "gatsby-plugin-react-helmet": "^3.0.11",
     "gatsby-plugin-sass": "^2.0.7",
     "gatsby-plugin-sharp": "^2.0.32",
     "gatsby-remark-copy-linked-files": "^2.0.7",
@@ -28,7 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "^6.0.0-beta",
     "uuid": "^3.2.1"
   },
   "license": "MIT",
