@@ -1,0 +1,449 @@
+/*------------------------------------*\
+    #POSTIFY
+\*------------------------------------*/
+
+// 文章篇幅 reset
+// 基于 type.css V1.1.0
+
+// scss-lint:disable SelectorDepth, PropertySpelling, MergeableSelector, DeclarationOrder
+
+$postify-font-size:       14px !default;
+$postify-line-height:     1.8 !default;
+
+$postify-color-hr:             #999 !default;
+$postify-color-link-hover:     #333 !default;
+$postify-color-link:           #81a2c2 !default;
+$postify-color-header-counter: #888 !default;
+
+.postify {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: $postify-font-size;
+  line-height: $postify-line-height;
+
+  /* ========================================================================= *\
+   * 链接
+  \* ========================================================================= */
+
+  a {
+    color: $postify-color-link;
+    text-decoration: none;
+  }
+
+  a:hover,
+  ins:hover {
+    color: $postify-color-link-hover;
+    text-decoration: underline;
+    text-underline-position: under;
+  }
+
+  li, h1, h2, h3, h4, h5, h6 {
+    // 下划线用边框模拟
+    a {
+      border-bottom: 1px solid transparent;
+      _border-bottom: 1px none;
+    }
+
+    a:hover {
+      text-decoration: none;
+      border-bottom: 1px solid;
+    }
+  }
+
+  a:hover code {
+    border-bottom: 1px solid;
+  }
+
+  // 防止 a>img hover 时下划线位置错位
+  // 如果 img 不需要下划线可以直接：
+  // a img {
+  //   float: left;
+  // }
+
+  // 或者：
+  // a img {
+  //   display: block;
+  // }
+
+  a img {
+    vertical-align: baseline;
+  }
+
+  acronym,
+  abbr {
+    border-bottom: 1px dotted;
+  }
+
+  // 保留 i 标签斜体
+  i {
+    font-style: italic;
+  }
+
+  // 重置中文斜体
+  // cite 标签通常用在书籍或杂志的标题
+  cite, em, var, address, dfn {
+    font-style: normal;
+  }
+
+  cite {
+    border-bottom: 3px double;
+  }
+
+  // 专名号和em
+  // 1. 保持留白，防止两个连续标签下划线连在一起
+  u, em {
+    margin-right: .25em; /* 1 */
+    text-decoration: none;
+  }
+
+  u + u,
+  u + em,
+  em + em,
+  em + u
+  // a + a
+  {
+    margin-left: .25em; /* 1 */
+  }
+
+  u {
+    border-bottom: 1px solid;
+  }
+
+  em {
+    border-bottom: 1px dotted;
+  }
+
+  // figure 内图片居中
+  figure {
+    text-align: center;
+  }
+
+  // 中文小于 12px 可读性很差
+  // 1. 统一 IE 6/7 中字体大小
+  // 2. 统一 Firefox 4+，Safari 5 和 Chrome 中「section」和「article」内的字体大小
+  p {
+    margin-top: 1.29em;
+    margin-bottom: 1.29em;
+  }
+
+  // 中文小于 12px 可读性很差
+  // 统一 IE 6/7 中字体大小
+  // 统一 Firefox 4+，Safari 5 和 Chrome 中「section」和「article」内的字体大小
+  h1 {
+    font-size: 2.14em;
+  }
+
+  h2 {
+    font-size: 1.86em;
+  }
+
+  h3 {
+    font-size: 1.43em;
+  }
+
+  h4 {
+    font-size: 1.29em;
+  }
+
+  h5 {
+    font-size: 1.14em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.29rem;
+    margin-bottom: 1.29rem;
+  }
+
+  blockquote {
+    margin: 2.29em 2em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+    line-height: $postify-line-height * 0.89;
+  }
+
+  /* ========================================================================= *\
+   * 列表
+  \* ========================================================================= */
+
+  ul,
+  ol {
+    margin-bottom: 1em;
+  }
+
+  // 1. 无序列表默认使用方块
+  ul {
+    list-style-type: square; // /* 1 */
+    padding-left: 2.14em;
+    margin-top: 1em;
+  }
+
+  ul ul,
+  ul ol ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 2.14em;
+  }
+
+  ol ol ul,
+  ol ul ul,
+  ul ul ul {
+    list-style-type: circle;
+  }
+
+  ol ol ol ul,
+  ol ol ul ul,
+  ol ul ul ul,
+  ul ul ul ul {
+    list-style-type: square;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-top: 1em;
+  }
+
+  /* ========================================================================= *\
+   * 代码
+  \* ========================================================================= */
+
+  code {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    line-height: normal;
+    font-size: 0.86em;
+    margin: 0 .25em;
+    padding: 0 .4em;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+  }
+
+  pre {
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+    word-break: break-all;
+    word-wrap: break-word;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // 通常代码高亮 code 标签会嵌套在 pre 标签内部，需要重置样式。
+  pre code {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    background: none;
+    border-radius: 0;
+    font-size: inherit;
+    line-height: 1.5;
+  }
+
+  /* ========================================================================= *\
+   * 快捷键 <kbd>
+  \* ========================================================================= */
+
+  kbd {
+    display: inline-block;
+    padding: .25em .5em .2em;
+    margin-left: .25em;
+    margin-right: .25em;
+    font: 75%/1 monaco, menlo, consolas, 'courier new', courier, monospace;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 3px;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-transform: capitalize; // 首字母大写
+
+    color: #555;
+    background-color: #fefefe;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
+    box-shadow: 0 2px 0 #ccc, 0 3px 1px #999, inset 0 1px 1px #fff;
+  }
+
+  .dark kbd,
+  kbd.dark {
+    color: #fdfdfd;
+    text-shadow: 0 -1px 0 #000;
+    border-color: #000;
+    background-color: #4d4c4c;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0));
+    box-shadow: 0 2px 0 #000, 0 3px 1px #999, inset 0 1px 1px #aaa, inset 0 -1px 3px #272727;
+  }
+
+  kbd kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: bold;
+    box-shadow: none;
+  }
+
+
+  // Mac 修饰键符号
+  // https://support.apple.com/kb/PH10564?locale=zh_CN
+  // [Mac——如何输入⌘、⌥、⇧、⌃、⎋等特殊字符](http://softu.cn/447)
+
+  kbd[data-key]:after {
+    font-family: 'Myriad Set Pro', 'Helvetica Neue', 'Helvetica', 'Arial', 'Verdana', 'sans-serif';
+  }
+
+  kbd[data-key='command']:after {
+    content: ' ⌘';
+  }
+
+  kbd[data-key='cmd']:after {
+    content: ' ⌘';
+  }
+
+  kbd[data-key='shift']:after {
+    content: ' ⇧';
+  }
+
+  kbd[data-key='control']:after {
+    content: ' ⌃';
+  }
+
+  kbd[data-key='option']:after {
+    content: ' ⌥';
+  }
+
+  kbd[data-key='capslock']:after {
+    content: ' ⇪';
+  }
+
+  kbd[data-key='caps lock']:after {
+    content: ' ⇪';
+  }
+
+  kbd[data-key='escape']:after {
+    content: ' ⎋';
+  }
+
+  kbd[data-key='esc']:after {
+    content: ' ⎋';
+  }
+
+  kbd[data-key='return']:after {
+    content: ' ↩';
+  }
+
+  kbd[data-key='enter']:after {
+    content: ' ↩';
+  }
+
+  kbd[data-key='delete']:after {
+    content: ' ⌫';
+  }
+
+  kbd[data-key='eject']:after {
+    content: ' ⏏';
+  }
+
+  hr {
+    border: 0 none;
+    border-bottom: 1px solid $postify-color-hr;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  /* ========================================================================= *\
+   * CSS 自动生成标题编号
+  \* ========================================================================= */
+
+  // --------------------------------------------------------------------------
+  // 标题自动生成编号
+  // --------------------------------------------------------------------------
+
+  // 传统中文排版有「章」「节」「卷」「篇」「辑」「集」「部」等概念，
+  // 在网页排版中，type.css 选取如下规则作为标题编号：
+  // 第1级--------章--------1
+  // 第2级--------节--------1.1
+  // 第3级--------节--------1.1.1
+  // 第4级--------节--------1.1.1.1
+  // -----------------------条--------1.
+  // -----------------------款--------1)
+  // -----------------------项--------(1)
+  // 所有标点均为西文标点
+  // 需要注意的是「条」比「章」后面多了「.」，「章」亦可用汉字代替，例如：「一、」
+  // Firefox 有私有属性分别实现简体和繁体的汉字编号，
+  // -moz-simp-chinese-formal(大写)/-moz-simp-chinese-informal(小写)，
+  // -moz-trad-chinese-formal(大写)/-moz-trad-chinese-informal(小写)，
+  // 参照：http://lists.w3.org/Archives/Public/public-html-ig-zh/2010Sep/0011.html
+  // 生成类似如下格式：
+  //
+  // 壹、章
+  // ----壹之一、节
+  // ----壹之二、节
+  //
+  // 贰、章
+  // ----贰之一、节
+  // ----贰之二、节
+  // --------贰之二之一、节
+  // --------贰之二之二、节
+  //
+  // @doc: 《科技文献的章节编号方法》（CY/T35-2001）
+
+  h2, h3, h4 {
+    &:before {
+      margin-right: .5em;
+      color: $postify-color-header-counter;
+    }
+  }
+
+  counter-reset: chapter section subsection;
+
+  // 标题生成阿拉伯数字编号
+  // HTML 结构         | 生成编号
+  // ----------------- | -------
+  // `<h2>章</h2>`      | 1. 章
+  // `<h3>节</h3>`      | 1.1 节
+  // `<h4>小结</h4>`    | 1.1.1 小结
+
+  // 一级标题（章）
+  h2 {
+    counter-reset: section;
+
+    &:before {
+      content: counter(chapter);
+      counter-increment: chapter;
+    }
+  }
+
+  // 二级标题（节）
+  // 输出 1.1
+  h3 {
+    counter-reset: subsection;
+
+    &:before {
+      content: counter(chapter) '.' counter(section);
+      counter-increment: section;
+    }
+  }
+
+  // 三级标题（小结）
+  // 输出 1.1.1
+  h4:before {
+    content: counter(chapter) '.' counter(section) '.' counter(subsection);
+    counter-increment: subsection;
+  }
+
+}
+
+
+// a 默认使用 border 来模拟下划线会占用盒模型高度，
+// 如果某些布局的地方不需要这样的下划线，使用该 class 去除。
+%underline-fix {
+  a:hover,
+  ins:hover {
+    border: 0 none;
+    text-decoration: underline;
+  }
+}

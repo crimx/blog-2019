@@ -1,37 +1,120 @@
 @charset "utf-8";
 
-
 /*------------------------------------*\
   #LIBS
 \*------------------------------------*/
 
-// Set Bulma brand colors with Nord palettes
-// $black: ;
-// $black-bis: ;
-// $black-ter: ;
-$grey-darker: #2E3440;
-$grey-dark: #3B4252;
-$grey: #434C5E;
-$grey-light: #4C566A;
-$grey-lighter: #D8DEE9;
-$white-ter: #E5E9F0;
-$white-bis: #ECEFF4;
-// $white: ;
-$orange: #D08770;
-$yellow: #EBCB8B;
-$green: #A3BE8C;
-$turquoise: #88C0D0;
-$cyan: #81A1C1;
-$blue: #5E81AC;
-$purple: #B48EAD;
-$red: #BF616A;
-
 // Bulma Components
 @import "~bulma/sass/utilities/_all.sass";
 @import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/components/media.sass";
+@import "~bulma/sass/components/navbar.sass";
+@import "~bulma/sass/elements/box.sass";
 @import "~bulma/sass/elements/button.sass";
 @import "~bulma/sass/elements/container.sass";
-@import "~bulma/sass/components/navbar.sass";
-@import "~bulma/sass/layout/section.sass";
 @import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/layout/hero.sass";
+@import "~bulma/sass/layout/section.sass";
 
+$postify-color-link-hover: $text;
+$postify-color-link: $link;
+
+@import './postify';
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+.preview-compatible-image {
+  border-radius: 5px;
+}
+
+.site-footer {
+  background-color: #1e1d1d;
+  padding: 13px 13px;
+  color: #666;
+}
+
+.site-description {
+  margin-bottom: 6px;
+  padding-top: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  
+  &::before {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 5px;
+    margin: 0 auto 25.2px;
+    background-color: $blue;
+  }
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    margin: 13px auto;
+    height: 1px;
+    background: $grey-dark;
+    transform: scaleY(0.5);
+  }
+}
+
+.copyright {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .copyright {
+    font-size: 0.9em;
+  }
+}
+
+/*------------------------------------*\
+  #MODIFIERS
+\*------------------------------------*/
+
+// with gatsby image as background
+.hero.has-gatsby-img {
+  position: relative;
+  color: #fff;
+  
+  .navbar {
+    .navbar-item:hover {
+      background-color: rgba(0, 0, 0, 0.3) !important;
+    }
+  }
+  
+  .hero-body {
+    align-items: flex-start !important;
+  }
+  
+  .hero-foot {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .gatsby-image-wrapper {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+  }
+}
+
+// do not push element down on touch device
+.navbar-menu.is-active {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .is-paddingless-mobile {
+    padding: 0;
+  }
+}
