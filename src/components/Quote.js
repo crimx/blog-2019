@@ -24,7 +24,7 @@ const Quote = React.memo(({ quote }) => {
           </svg>
         </div>
         <div className='media-content'>
-          <div className='content is-italic'>
+          <div className='is-italic'>
             {typeof quote.content === 'string'
               ? quote.content.split('\n').map(line => <p key={line}>{line}</p>)
               : quote.content}
