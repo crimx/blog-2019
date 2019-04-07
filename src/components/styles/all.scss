@@ -12,9 +12,17 @@
 @import "~bulma/sass/elements/box.sass";
 @import "~bulma/sass/elements/button.sass";
 @import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/elements/content.sass";
 @import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/grid/columns.sass";
 @import "~bulma/sass/layout/hero.sass";
 @import "~bulma/sass/layout/section.sass";
+
+// margin instead of padding
+.section {
+  margin: 3rem 1.5rem;
+  padding: 0;
+}
 
 $postify-color-link-hover: $text;
 $postify-color-link: $link;
@@ -114,7 +122,11 @@ $postify-color-link: $link;
 }
 
 @media screen and (max-width: 768px) {
+  .is-marginless-mobile {
+    margin: 0 !important;
+  }
+
   .is-paddingless-mobile {
-    padding: 0;
+    padding: 0 !important;
   }
 }
