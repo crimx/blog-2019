@@ -39,6 +39,13 @@ export const Navbar = React.memo(() => {
             <Link className='navbar-item' to='/archives'>
               Archives
             </Link>
+            <a
+              className='navbar-item'
+              href='https://www.crimx.com/projects/'
+              target='_blank'
+            >
+              Projects
+            </a>
             <Link className='navbar-item' to='/about'>
               About
             </Link>
