@@ -63,7 +63,7 @@ const Layout = ({ children }) => (
                 rel='icon'
                 type='image/png'
                 sizes={`${size}x${size}`}
-                href={`/img/favicon/favicon-${size}x${size}.png`}
+                href={withPrefix(`/img/favicon/favicon-${size}x${size}.png`)}
               />
             ))}
 
@@ -73,14 +73,14 @@ const Layout = ({ children }) => (
                 rel='icon'
                 type='apple-touch-icon'
                 sizes={`${size}x${size}`}
-                href={`/img/favicon/favicon-${size}x${size}.png`}
+                href={withPrefix(`/img/favicon/favicon-${size}x${size}.png`)}
               />
             ))}
 
             <meta name='msapplication-TileColor' content='#ffffff' />
             <meta
               name='msapplication-TileImage'
-              content='/img/favicon/ms-icon-144x144.png'
+              content={withPrefix('/img/favicon/ms-icon-144x144.png')}
             />
             <link rel='manifest' href='/manifest.json' />
 
