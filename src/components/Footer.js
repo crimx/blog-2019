@@ -87,6 +87,7 @@ const Footer = React.memo(() => (
           <div className='site-description'>
             I{' '}
             <a
+              className='has-text-info'
               href={social.github.url}
               target='_blank'
               rel='nofollow noreferrer noopener'
@@ -95,6 +96,7 @@ const Footer = React.memo(() => (
             </a>
             ,{' '}
             <a
+              className='has-text-info'
               href={social.codepen.url}
               target='_blank'
               rel='nofollow noreferrer noopener'
@@ -103,13 +105,18 @@ const Footer = React.memo(() => (
             </a>
             ,{' '}
             <a
+              className='has-text-info'
               href={social.twitter.url}
               target='_blank'
               rel='nofollow noreferrer noopener'
             >
               tweet
             </a>{' '}
-            &amp; <a href={withPrefix('/')}>blog</a>.
+            &amp;{' '}
+            <a className='has-text-info' href={withPrefix('/')}>
+              blog
+            </a>
+            .
           </div>
           <div className='copyright'>
             © COPYRIGHT 2019 · Designed &amp; Written With{' '}

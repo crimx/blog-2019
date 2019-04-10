@@ -41,6 +41,7 @@ $postify-color-link: $link;
   background-color: #1e1d1d;
   padding: 13px 13px;
   color: #666;
+  padding-top: 50px;
 }
 
 .site-description {
@@ -55,7 +56,7 @@ $postify-color-link: $link;
     width: 50%;
     height: 5px;
     margin: 0 auto 25.2px;
-    background-color: $blue;
+    background-color: $info;
   }
   
   &::after {
