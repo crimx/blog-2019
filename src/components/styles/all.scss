@@ -13,6 +13,7 @@
 @import "~bulma/sass/elements/button.sass";
 @import "~bulma/sass/elements/container.sass";
 @import "~bulma/sass/elements/content.sass";
+@import "~bulma/sass/elements/tag.sass";
 @import "~bulma/sass/elements/title.sass";
 @import "~bulma/sass/grid/columns.sass";
 @import "~bulma/sass/layout/hero.sass";
@@ -35,6 +36,21 @@ $postify-color-link: $link;
 
 .preview-compatible-image {
   border-radius: 5px;
+}
+
+.post-hreo-foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5em;
+  color: $dark;
+  
+  a {
+    @extend .is-size-7-mobile;
+    display: inline-block;
+    margin-right: 0.5em;
+    color: currentColor;
+  }
 }
 
 .site-footer {
@@ -116,9 +132,32 @@ $postify-color-link: $link;
     height: 100%;
     user-select: none;
   }
+}
+
+.hero.has-trianglify {
+  @extend .is-fullheight;
+  background: $grey-light no-repeat center / cover;
+  
+  .navbar-item:hover {
+    background-color: rgba($white, 0.3) !important;
+  }
+
+  .navbar-burger {
+    color: $white;
+  }
   
   .navbar-menu.is-active {
-    background-color: rgba(0, 0, 0, 0.7) !important;
+    background-color: rgba($white, 0.5) !important;
+  }
+  
+  @media screen and (min-width: $tablet) {
+    min-height: auto;
+
+    .hero-body {
+      display: block;
+      padding-bottom: 9rem;
+      padding-top: 9rem;
+    }
   }
 }
 
