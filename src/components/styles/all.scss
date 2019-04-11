@@ -86,13 +86,17 @@ $postify-color-link: $link;
 
 // with gatsby image as background
 .hero.has-gatsby-img {
+  @extend .is-fullheight;
+  @extend .is-dark;
   position: relative;
   color: #fff;
   
-  .navbar {
-    .navbar-item:hover {
-      background-color: rgba(0, 0, 0, 0.3) !important;
-    }
+  .navbar-item:hover {
+    background-color: rgba($black, 0.3) !important;
+  }
+    
+  .navbar-menu.is-active {
+    background-color: rgba($black, 0.7) !important;
   }
   
   .hero-body {

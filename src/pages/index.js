@@ -15,7 +15,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className='hero has-gatsby-img is-fullheight is-dark'>
+        <section className='hero has-gatsby-img'>
           <Img fluid={data.heroimg.childImageSharp.fluid} />
           <div className='hero-head'>
             <Navbar />
