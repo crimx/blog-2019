@@ -50,6 +50,10 @@ $postify-color-link: $link;
     display: inline-block;
     margin-right: 0.5em;
     color: currentColor;
+    
+    &:hover {
+      color: $link;
+    }
   }
 }
 
@@ -99,6 +103,14 @@ $postify-color-link: $link;
 /*------------------------------------*\
   #MODIFIERS
 \*------------------------------------*/
+
+.is-link-reverse {
+  color: $dark;
+  
+  &:hover {
+    color: $link;
+  }
+}
 
 // with gatsby image as background
 .hero.has-gatsby-img {

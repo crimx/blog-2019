@@ -52,7 +52,7 @@ BlogPostTemplate.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string)
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, pageContext }) => {
   const { markdownRemark: post } = data
   const { title, description, date } = post.frontmatter
 
@@ -118,6 +118,44 @@ const BlogPost = ({ data }) => {
         description={description}
         tags={post.frontmatter.tags}
       />
+      <section className='section'>
+        <div className='columns'>
+          <div className='column'>
+            {pageContext.prev && (
+              <Link
+                className='is-block is-link-reverse has-text-right has-text-centered-mobile'
+                to={pageContext.prev.path}
+              >
+                <strong className='has-text-grey-lighter'>OLDER</strong>
+                <p>{pageContext.prev.title}</p>
+              </Link>
+            )}
+          </div>
+
+          <div
+            className='has-background-grey-lighter is-hidden-mobile'
+            style={{
+              alignSelf: 'center',
+              width: 8,
+              height: 8,
+              margin: '0 1em',
+              borderRadius: '50%'
+            }}
+          />
+
+          <div className='column'>
+            {pageContext.next && (
+              <Link
+                className='is-block is-link-reverse has-text-centered-mobile'
+                to={pageContext.next.path}
+              >
+                <strong className='has-text-grey-lighter'>NEWER</strong>
+                <p>{pageContext.next.title}</p>
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
     </Layout>
   )
 }
@@ -125,6 +163,16 @@ const BlogPost = ({ data }) => {
 BlogPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object
+  }),
+  pageContext: PropTypes.shape({
+    prev: PropTypes.shape({
+      title: PropTypes.string,
+      path: PropTypes.string
+    }),
+    next: PropTypes.shape({
+      title: PropTypes.string,
+      path: PropTypes.string
+    })
   })
 }
 
