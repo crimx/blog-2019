@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'CRIMX Blog',
+    title: 'CRIMX BLOG',
     description:
       'CRIMX 的博客，主要记录 Web 前端相关的一些内容，偶尔涉及其它方面。',
     quote: {

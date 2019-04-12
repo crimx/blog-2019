@@ -98,18 +98,16 @@ export default class IndexPage extends React.Component {
             <div className='content'>
               <p className='has-text-centered'>最近文章：</p>
               {posts.map(({ node: post }) => (
-                <div className='box content' key={post.id}>
+                <div className='box' key={post.id}>
                   <p>
-                    <Link className='has-text-primary' to={post.fields.slug}>
-                      {post.frontmatter.title}
+                    <Link className='is-link-reverse' to={post.fields.slug}>
+                      <strong>{post.frontmatter.title}</strong>
                     </Link>
                     <span> &bull; </span>
                     <small>{post.frontmatter.date}</small>
                   </p>
+                  <p>{post.excerpt}</p>
                   <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
                     <Link className='button is-small' to={post.fields.slug}>
                       继续阅读 →
                     </Link>
