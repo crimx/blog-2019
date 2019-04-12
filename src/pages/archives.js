@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { parse as qsParse } from 'query-string'
-import Layout from '../../components/Layout'
-import Navbar from '../../components/Navbar'
-import PostList from './PostList'
+import Layout from '../components/Layout'
+import Navbar from '../components/Navbar'
+import PostList from '../components/PostList'
 
 const ArchivesPage = ({ data: { site, posts }, location }) => {
   const [searchText, setSearchText] = useState(
