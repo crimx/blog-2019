@@ -21,6 +21,11 @@ $postify-color-header-counter: #888 !default;
   font-size: $postify-font-size;
   line-height: $postify-line-height;
   
+  iframe {
+    width: 100%;
+    height: 408px;
+  }
+  
   p > img {
     display: block;
     margin: 0 auto;
