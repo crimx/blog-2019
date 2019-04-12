@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.7.4",
-    "gatsby": "^2.3.3",
+    "gatsby": "^2.3.21",
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-netlify": "^2.0.6",
     "gatsby-plugin-netlify-cms": "^3.0.9",
@@ -26,6 +26,7 @@
     "node-sass": "^4.11.0",
     "parcel-bundler": "^1.12.3",
     "prop-types": "^15.7.2",
+    "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^6.0.0-beta",

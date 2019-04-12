@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
 import { graphql, Link } from 'gatsby'
 import Trianglify from 'trianglify'
 import Layout from '../components/Layout'
@@ -29,8 +28,7 @@ export const BlogPostTemplate = ({
                     <Link
                       key={tag}
                       className='tag is-info is-rounded'
-                      to={`/archives`}
-                      state={{ tag: kebabCase(tag) }}
+                      to={`/archives?search=%23${tag}`}
                     >
                       #{tag}
                     </Link>
