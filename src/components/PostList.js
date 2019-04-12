@@ -34,7 +34,7 @@ const PostItem = React.memo(({ post, onTagClicked }) => {
 })
 
 PostItem.propTypes = {
-  post: {
+  post: PropTypes.shape({
     id: PropTypes.string,
     fields: PropTypes.shape({
       slug: PropTypes.string
@@ -45,7 +45,7 @@ PostItem.propTypes = {
       description: PropTypes.string,
       tags: PropTypes.arrayOf(PropTypes.string)
     })
-  },
+  }),
   onTagClicked: PropTypes.func
 }
 
@@ -104,7 +104,7 @@ PostList.propTypes = {
   posts: PropTypes.shape({
     edges: PropTypes.arrayOf(
       PropTypes.shape({
-        node: PropTypes.shape(PostItem.propTypes.post)
+        node: PostItem.propTypes.post
       })
     )
   }),
