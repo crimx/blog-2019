@@ -20,6 +20,11 @@ $postify-color-header-counter: #888 !default;
   margin-right: auto;
   font-size: $postify-font-size;
   line-height: $postify-line-height;
+  
+  p > img {
+    display: block;
+    margin: 0 auto;
+  }
 
   /* ========================================================================= *\
    * 链接
@@ -213,38 +218,38 @@ $postify-color-header-counter: #888 !default;
    * 代码
   \* ========================================================================= */
 
-  code {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    line-height: normal;
-    font-size: 0.86em;
-    margin: 0 .25em;
-    padding: 0 .4em;
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-  }
+  // code {
+  //   display: inline-block;
+  //   *display: inline;
+  //   *zoom: 1;
+  //   line-height: normal;
+  //   font-size: 0.86em;
+  //   margin: 0 .25em;
+  //   padding: 0 .4em;
+  //   border: 1px solid #ddd;
+  //   background-color: #f8f8f8;
+  //   border-radius: 3px;
+  // }
 
-  pre {
-    overflow: auto;
-    padding: 6px 10px;
-    border-radius: 3px;
-    word-break: break-all;
-    word-wrap: break-word;
-    -webkit-overflow-scrolling: touch;
-  }
+  // pre {
+  //   overflow: auto;
+  //   padding: 6px 10px;
+  //   border-radius: 3px;
+  //   word-break: break-all;
+  //   word-wrap: break-word;
+  //   -webkit-overflow-scrolling: touch;
+  // }
 
   // 通常代码高亮 code 标签会嵌套在 pre 标签内部，需要重置样式。
-  pre code {
-    margin: 0;
-    padding: 0;
-    border: 0 none;
-    background: none;
-    border-radius: 0;
-    font-size: inherit;
-    line-height: 1.5;
-  }
+  // pre code {
+  //   margin: 0;
+  //   padding: 0;
+  //   border: 0 none;
+  //   background: none;
+  //   border-radius: 0;
+  //   font-size: inherit;
+  //   line-height: 1.5;
+  // }
 
   /* ========================================================================= *\
    * 快捷键 <kbd>

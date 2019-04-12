@@ -42,6 +42,16 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+              noInlineHighlight: true
+            }
+          },
+          {
+            resolve: 'gatsby-remark-code-titles'
+          },
+          {
             resolve: 'gatsby-remark-relative-images',
             options: {
               name: 'uploads'
