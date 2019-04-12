@@ -15,7 +15,7 @@ const NotFoundPage = () => (
         style={{ paddingTop: 0, alignItems: 'flex-start' }}
       >
         <div className='container content'>
-          <h1 className='title' style={{ fontSize: 80 }}>
+          <h1 className='title' style={{ fontSize: 100, letterSpacing: 15 }}>
             404
           </h1>
           <p>
