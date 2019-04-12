@@ -1,6 +1,7 @@
 ---
-templateKey: 'about-page'
+layout: 'about-page'
 path: /about
+date: 2019-04-13T12:00:00.000Z
 title: 关于本博客及作者
 ---
 

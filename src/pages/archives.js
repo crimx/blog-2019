@@ -25,7 +25,7 @@ const ArchivesPage = ({ data: { site, posts }, location }) => {
                 onChange={e =>
                   setSearchText((e.currentTarget.value || '').trim())
                 }
-                placeholder='Search posts. Preceding "#" to match tags.'
+                placeholder='Preceding "#" to match tags.'
               />
             </div>
           </div>
@@ -61,7 +61,7 @@ export const archivesPageQuery = graphql`
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      filter: { frontmatter: { layout: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -70,7 +70,7 @@ export const archivesPageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY", locale: "zh-CN")
+            date(formatString: "MMMM DD, YYYY")
             title
             description
             tags

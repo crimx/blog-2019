@@ -17,7 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               path
               title
-              templateKey
+              layout
             }
           }
         }
@@ -35,7 +35,7 @@ exports.createPages = ({ actions, graphql }) => {
       path: edge.node.fields.slug,
       title: edge.node.frontmatter.title,
       component: path.resolve(
-        `src/templates/${edge.node.frontmatter.templateKey}.js`
+        `src/templates/${edge.node.frontmatter.layout}.js`
       ),
       // additional data can be passed via context
       context: {
@@ -44,7 +44,7 @@ exports.createPages = ({ actions, graphql }) => {
     }))
 
     options
-      .filter((_, i) => edges[i].node.frontmatter.templateKey === 'blog-post')
+      .filter((_, i) => edges[i].node.frontmatter.layout === 'blog-post')
       .forEach((option, i, blogPostOptions) => {
         option.context.prev =
           i === 0

@@ -169,7 +169,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+      filter: { frontmatter: { layout: { eq: "blog-post" } } }
       limit: 5
     ) {
       edges {
@@ -181,8 +181,8 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            templateKey
-            date(formatString: "MMMM DD, YYYY", locale: "zh-CN")
+            layout
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }
