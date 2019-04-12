@@ -19,7 +19,8 @@ const srcDoc = `<!DOCTYPE html>
     }
 
     ${
-  'ontouchstart' in document.documentElement
+  typeof document !== 'undefined' &&
+      'ontouchstart' in document.documentElement
     ? ''
     : `.douban-show-scroller:after {
         content:'';
