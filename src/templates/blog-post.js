@@ -48,12 +48,12 @@ const BlogPost = ({ data, pageContext }) => {
   const { markdownRemark: post } = data
   const { title, description, date } = post.frontmatter
 
-  const heroBgStyle = useMemo(
+  const bgUrl = useMemo(
     () => {
       if (typeof window === 'undefined') {
-        return {}
+        return ''
       }
-      const url = window.URL.createObjectURL(
+      return window.URL.createObjectURL(
         dataURItoBlob(
           Trianglify({
             width: window.innerWidth,
@@ -62,9 +62,19 @@ const BlogPost = ({ data, pageContext }) => {
           }).png()
         )
       )
-      return { backgroundImage: `url('${url}')` }
     },
     [title]
+  )
+
+  // fix Trianglify first render
+  const bgRef = useRef()
+  useEffect(
+    () => {
+      if (bgRef.current) {
+        bgRef.current.style.backgroundImage = `url('${bgUrl}')`
+      }
+    },
+    [bgUrl]
   )
 
   const utterancesRef = useRef()
@@ -90,7 +100,11 @@ const BlogPost = ({ data, pageContext }) => {
       title={`${title} | ${data.site.siteMetadata.title}`}
       description={`${description}`}
     >
-      <section className='hero is-medium has-trianglify' style={heroBgStyle}>
+      <section
+        ref={bgRef}
+        className='hero is-medium has-trianglify'
+        style={{ backgroundImage: `url('${bgUrl}')` }}
+      >
         <div className='hero-head'>
           <Navbar />
         </div>

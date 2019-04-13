@@ -225,7 +225,7 @@ $postify-color-link: $link;
 
 .hero.has-trianglify {
   @extend .is-fullheight;
-  background: $grey-light no-repeat center / cover;
+  background: no-repeat center / cover;
   
   .navbar-item:hover {
     background-color: rgba($white, 0.3) !important;
