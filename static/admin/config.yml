@@ -13,18 +13,18 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template Key", name: "layout", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
-      - label: "Tags"
-        name: "tags"
+      - label: "Quote"
+        name: "quote"
         widget: "object"
         fields:
           - {label: "Content", name: "content", widget: "text"}
           - {label: "Author", name: "author", widget: "string"}
           - {label: "Source", name: "source", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}     
 
   - name: "pages"
     label: "Pages"
