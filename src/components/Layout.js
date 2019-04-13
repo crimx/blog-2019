@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql, withPrefix } from 'gatsby'
 import Footer from './Footer'
-
-import './styles/all.scss'
+import './styles'
 
 const faviconSizes = ['192', '32', '96', '16']
 const appleIconSizes = [
