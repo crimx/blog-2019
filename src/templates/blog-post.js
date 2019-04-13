@@ -118,13 +118,13 @@ const BlogPost = ({ data, pageContext }) => {
       <section className='section'>
         <div className='columns'>
           <div className='column'>
-            {pageContext.prev && (
+            {pageContext.next && (
               <Link
                 className='is-block is-link-reverse has-text-right has-text-centered-mobile'
-                to={pageContext.prev.path}
+                to={pageContext.next.path}
               >
-                <strong className='has-text-grey-lighter'>OLDER</strong>
-                <p>{pageContext.prev.title}</p>
+                <strong className='has-text-grey-lighter'>NEWER</strong>
+                <p>{pageContext.next.title}</p>
               </Link>
             )}
           </div>
@@ -141,13 +141,13 @@ const BlogPost = ({ data, pageContext }) => {
           />
 
           <div className='column'>
-            {pageContext.next && (
+            {pageContext.prev && (
               <Link
                 className='is-block is-link-reverse has-text-centered-mobile'
-                to={pageContext.next.path}
+                to={pageContext.prev.path}
               >
-                <strong className='has-text-grey-lighter'>NEWER</strong>
-                <p>{pageContext.next.title}</p>
+                <strong className='has-text-grey-lighter'>OLDER</strong>
+                <p>{pageContext.prev.title}</p>
               </Link>
             )}
           </div>
