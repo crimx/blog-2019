@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 import Trianglify from 'trianglify'
@@ -66,6 +66,24 @@ const BlogPost = ({ data, pageContext }) => {
     },
     [title]
   )
+
+  const utterancesRef = useRef()
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const el = document.createElement('script')
+    el.src = 'https://utteranc.es/client.js'
+    el.async = true
+    el.setAttribute('repo', 'crimx/blog-comments')
+    el.setAttribute('issue-term', 'pathname')
+    el.setAttribute('label', 'Comment')
+    el.setAttribute('theme', 'github-light')
+    el.setAttribute('crossOrigin', 'anonymous')
+    if (utterancesRef.current) {
+      utterancesRef.current.appendChild(el)
+    }
+  }, [])
 
   return (
     <Layout
@@ -153,6 +171,7 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
+      <section key='utterances' className='section' ref={utterancesRef} />
     </Layout>
   )
 }
