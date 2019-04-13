@@ -77,7 +77,50 @@ module.exports = {
       }
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-feed`,
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(({ node }) => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.frontmatter.description || node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ 'content:encoded': node.html }]
+                })
+              })
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  limit: 10,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: {frontmatter: { draft: { ne: true } }}
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        description
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'CRIMX BLOG RSS Feed'
+          }
+        ]
+      }
+    },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
