@@ -190,12 +190,18 @@ $postify-color-link: $link;
   position: relative;
   color: #fff;
   
+  .navbar-item {
+    @media screen and (max-width: $mobile) {
+      color: $grey-dark !important;
+    }
+  }
+  
   .navbar-item:hover {
     background-color: rgba($black, 0.3) !important;
   }
     
   .navbar-menu.is-active {
-    background-color: rgba($black, 0.7) !important;
+    background-color: rgba($white, 0.95) !important;
   }
   
   .hero-body {
@@ -230,7 +236,7 @@ $postify-color-link: $link;
   }
   
   .navbar-menu.is-active {
-    background-color: rgba($white, 0.5) !important;
+    background-color: rgba($white, 0.7) !important;
   }
   
   @media screen and (min-width: $tablet) {
