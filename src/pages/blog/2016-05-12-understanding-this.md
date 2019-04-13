@@ -1,16 +1,16 @@
 ---
+layout: blog-post
+date: 2016-05-12T12:00:00.000Z
 title: JavaScript this 的六道坎
+description: 鉴于this风骚的运作方式，对this的理解是永不过时的话题，本文试图通过将其大卸六块来钉住这个磨人的妖精。
+quote:
+  author: Dr. Watson
+  content: '"This is indeed a mystery," I remarked. "What do you imagine that it means?"'
+  source: A Scandal In Bohemia
 tags:
   - Understanding JavaScript
   - This
   - Recommended
-quote:
-  content: 'This is indeed a mystery," I remarked. "What do you imagine that it means?'
-  author: 'Dr. Watson, "A Scandal In Bohemia"'
-  source: ''
-date: 2016-05-12T12:00:00.000Z
-layout: blog-post
-description: ''
 ---
 
 鉴于`this`风骚的运作方式，对`this`的理解是永不过时的话题，本文试图通过将其大卸六块来钉住这个磨人的妖精。
