@@ -257,8 +257,16 @@ $postify-color-link: $link;
   width: 100%;
 }
 
+.is-paddingless-top {
+  padding-top: 0 !important;
+}
+
 .is-justified-center {
   justify-content: center !important;
+}
+
+.is-aligned-center {
+  align-items: center !important;
 }
 
 @media screen and (max-width: $mobile) {

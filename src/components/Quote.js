@@ -1,21 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const boxStyle = {
+  margin: '0 auto',
+  maxWidth: 800,
+  fontFamily: `Georgia,'hiragino sans gb',stheiti,'wenquanyi micro hei',\\5FAE\\8F6F\\96C5\\9ED1,\\5B8B\\4F53,serif`
+}
+
 const Quote = React.memo(({ quote }) => {
   if (!quote || !quote.content) {
     return null
   }
 
+  const { content, author, source } = quote
+  const hasFoot = !!(author || source)
+
   return (
-    <div
-      className='box'
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        fontFamily: `Georgia,'hiragino sans gb',stheiti,'wenquanyi micro hei',\\5FAE\\8F6F\\96C5\\9ED1,\\5B8B\\4F53,serif`
-      }}
-    >
-      <article className='media'>
+    <div className='box' style={boxStyle}>
+      <article
+        className={`media${hasFoot ? '' : ' is-flex is-aligned-center'}`}
+      >
         <div className='media-left'>
           <svg viewBox='0 0 32 32' width='48' height='48' fill='#bdc3c7'>
             <title>quote</title>
@@ -25,17 +29,17 @@ const Quote = React.memo(({ quote }) => {
         </div>
         <div className='media-content'>
           <div className='is-italic'>
-            {typeof quote.content === 'string'
-              ? quote.content.split('\n').map(line => <p key={line}>{line}</p>)
-              : quote.content}
+            {typeof content === 'string'
+              ? content.split('\n').map(line => <p key={line}>{line}</p>)
+              : content}
           </div>
-          <div className='has-text-right'>
-            {'— '}
-            {quote.author && (
-              <span className='is-uppercase'>{quote.author}, </span>
-            )}
-            <span className='is-italic'>{quote.source}</span>
-          </div>
+          {hasFoot && (
+            <div className='has-text-right'>
+              {'— '}
+              {!!author && <span className='is-uppercase'>{author}, </span>}
+              {!!source && <span className='is-italic'>{source}</span>}
+            </div>
+          )}
         </div>
       </article>
     </div>

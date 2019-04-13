@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import Trianglify from 'trianglify'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
+import Quote from '../components/Quote'
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
@@ -13,7 +14,7 @@ export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
     <section className='section'>
       <div className='container'>
         <div className='columns'>
-          <div className='column is-10 is-offset-1'>
+          <div className='column is-10 is-offset-1 is-paddingless-top'>
             <PostContent className='postify' content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `2rem` }}>
@@ -106,6 +107,9 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
+      <section className='section'>
+        <Quote quote={post.frontmatter.quote} />
+      </section>
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
@@ -190,6 +194,11 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        quote {
+          content
+          author
+          source
+        }
         tags
       }
     }
