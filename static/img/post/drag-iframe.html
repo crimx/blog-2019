@@ -1,0 +1,52 @@
+layout: false
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    html {
+      background: #27ae60;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  var baseMouseX, baseMouseY
+
+  document.addEventListener('mousedown', handleDragStart)
+
+  function handleDragStart (evt) {
+    baseMouseX = evt.clientX
+    baseMouseY = evt.clientY
+
+    window.parent.postMessage({
+      msg: 'SALADICT_DRAG_START',
+      mouseX: baseMouseX,
+      mouseY: baseMouseY
+    }, '*')
+
+    document.addEventListener('mouseup', handleDragEnd)
+    document.addEventListener('mousemove', handleMousemove)
+  }
+
+  function handleMousemove (evt) {
+    window.parent.postMessage({
+      msg: 'SALADICT_DRAG_MOUSEMOVE',
+      offsetX: evt.clientX - baseMouseX,
+      offsetY: evt.clientY - baseMouseY
+    }, '*')
+  }
+
+  function handleDragEnd () {
+    window.parent.postMessage({
+      msg: 'SALADICT_DRAG_END'
+    }, '*')
+
+    document.removeEventListener('mouseup', handleDragEnd)
+    document.removeEventListener('mousemove', handleMousemove)
+  }
+</script>
+</body>
+</html>
