@@ -13,7 +13,7 @@ const PostItem = React.memo(({ post, onTagClicked }) => {
         <span> &bull; </span>
         <small>{date}</small>
       </p>
-      <p>{description}</p>
+      <p>{description || post.excerpt}</p>
       {tags && tags.length ? (
         <p className='tags'>
           {tags.map(tag => (
@@ -61,9 +61,10 @@ const PostList = React.memo(({ text, posts, setSearchText }) => {
     () =>
       posts.edges.map(({ node: post }) => ({
         title: (post.frontmatter.title || '').toLowerCase(),
-        description: (post.frontmatter.description || '').toLocaleLowerCase(),
+        description: (post.frontmatter.description || '').toLowerCase(),
+        excerpt: (post.excerpt || '').toLowerCase(),
         tags: (post.frontmatter.tags || []).map(tag =>
-          (tag || '').toLocaleLowerCase()
+          (tag || '').toLowerCase()
         )
       })),
     [posts]
@@ -83,7 +84,8 @@ const PostList = React.memo(({ text, posts, setSearchText }) => {
       filteredPosts = filteredPosts.filter(
         (_, i) =>
           lowerCasePosts[i].title.includes(lowerCaseText) ||
-          lowerCasePosts[i].description.includes(lowerCaseText)
+          lowerCasePosts[i].description.includes(lowerCaseText) ||
+          lowerCasePosts[i].excerpt.includes(lowerCaseText)
       )
     }
   }

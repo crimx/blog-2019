@@ -6,12 +6,7 @@ import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
 import Content, { HTMLContent } from '../components/Content'
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags
-}) => {
+export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
   const PostContent = contentComponent || Content
 
   return (
@@ -19,7 +14,6 @@ export const BlogPostTemplate = ({
       <div className='container'>
         <div className='columns'>
           <div className='column is-10 is-offset-1'>
-            <p>{description}</p>
             <PostContent className='postify' content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `2rem` }}>
@@ -46,7 +40,6 @@ export const BlogPostTemplate = ({
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string)
 }
 
@@ -74,7 +67,10 @@ const BlogPost = ({ data, pageContext }) => {
   )
 
   return (
-    <Layout title={`${title}`} description={`${description}`}>
+    <Layout
+      title={`${title} | ${data.site.siteMetadata.title}`}
+      description={`${description}`}
+    >
       <section className='hero is-medium has-trianglify' style={heroBgStyle}>
         <div className='hero-head'>
           <Navbar />
@@ -113,7 +109,6 @@ const BlogPost = ({ data, pageContext }) => {
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={description}
         tags={post.frontmatter.tags}
       />
       <section className='section'>
@@ -160,6 +155,11 @@ const BlogPost = ({ data, pageContext }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string
+      })
+    }),
     markdownRemark: PropTypes.object
   }),
   pageContext: PropTypes.shape({
@@ -178,6 +178,11 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       id
       html
