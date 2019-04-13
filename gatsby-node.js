@@ -71,11 +71,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node) // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    // Jeykll style post path
+    const filepath = createFilePath({ node, getNode })
     createNodeField({
-      name: `slug`,
       node,
-      value
+      name: 'slug',
+      value: filepath.replace(
+        /^\/blog\/([\d]{4})-([\d]{2})-([\d]{2})-/,
+        '/$1/$2/$3/'
+      )
     })
   }
 }
