@@ -2,14 +2,13 @@
 layout: blog-post
 title: 编译原理与计算器
 date: 2014-03-15T12:00:00.000Z
-description: 上次交流会师弟演讲了栈式计算器，这在《数据结构》里也有提到，当时是用C实现了。而这学期学《编译原理》，里面也涉及到数学表达式。两者对比用栈更快，但是使用中间代码可以使到条理更清晰，还可以做很多有趣的扩展。所以这次交流会的内容有着落了。
-quote: 
-  content: "Everything you've ever wanted is on the other side of fear."
-  author: George Addair
-tags: 
+description: >-
+  上次交流会师弟演讲了栈式计算器，这在《数据结构》里也有提到，当时是用C实现了。而这学期学《编译原理》，里面也涉及到数学表达式。两者对比用栈更快，但是使用中间代码可以使到条理更清晰，还可以做很多有趣的扩展。所以这次交流会的内容有着落了。
+tags:
   - 编译原理
   - Compiler
 ---
+上次交流会师弟演讲了栈式计算器，这在《数据结构》里也有提到，当时是用C实现了。而这学期学《编译原理》，里面也涉及到数学表达式。两者对比用栈更快，但是使用中间代码可以使到条理更清晰，还可以做很多有趣的扩展。所以这次交流会的内容有着落了。
 
 因为想顺便做个简单的 GUI 看看效果，所以打算用 Qt 或 pyQt，但是之前重装了系统，去下载Qt校园网速又渣渣，最后还是用了 Java。
 
@@ -19,22 +18,23 @@ tags:
 
 ### 表达式：
 
-![expression][expression]
+![expression](/img/post/simple-calculator/expression.png)
 
 ### 项：
 
-![term][term]
+![term](/img/post/simple-calculator/term.png)
 
 ### 因子：
 
-![factor][factor]
+![factor](/img/post/simple-calculator/factor.png)
 
 ### 数字
+
 这把所有的数字当做自然数处理：
 
-![number][number]
+![number](/img/post/simple-calculator/number.png)
 
-![integer][integer]
+![integer](/img/post/simple-calculator/integer.png)
 
 ## 嵌套关系
 
@@ -44,9 +44,9 @@ tags:
 
 比如要解析 `25+3/(43-33)-37`，如图
 
-![nest][nest]
+![nest](/img/post/simple-calculator/nest.png)
 
-结合之前的语法图会比较好理解，我在[PPT][PPT]上做了`动态图`。可以看到，每次都从表达式中递归的判断到`终结符`，扫描一遍就可以建立中间代码了。
+结合之前的语法图会比较好理解，我在[PPT](/img/post/simple-calculator/files/calculator.ppt)上做了`动态图`。可以看到，每次都从表达式中递归的判断到`终结符`，扫描一遍就可以建立中间代码了。
 
 ## 中间代码
 
@@ -54,13 +54,13 @@ tags:
 
 举例来说，解析 `-25+3/(43-33)-(-37)` 生成的中间代码如图所示。
 
-![ast][ast]
+![ast](/img/post/simple-calculator/ast.png)
 
-可以结合[PPT][PPT]的动态图理解整个建立过程。扫描的时候，树根为数字遇到操作符便往上方长树，树根为操作符遇到更低优先级的操作符也往上长树，其它情况则往下长。
+可以结合[PPT](/img/post/simple-calculator/files/calculator.ppt)的动态图理解整个建立过程。扫描的时候，树根为数字遇到操作符便往上方长树，树根为操作符遇到更低优先级的操作符也往上长树，其它情况则往下长。
 
 ## 代码实现
 
-太懒没弄 UML 图，不过类也不多，直接讲吧，完整源码在[这里][source]。
+太懒没弄 UML 图，不过类也不多，直接讲吧，完整源码在[这里](/img/post/simple-calculator/files/calc.tar.gz)。
 
 首先是 `Token` 类，扫描时就会将字符串生成一个个 `Token`。
 
@@ -120,7 +120,7 @@ else {
 }
 ```
 
-`Parser` 类就完全是对应着上面的语法图去实现了，遇到`非终结符`便递归，逻辑非常清晰，可以参看[源码][source]
+`Parser` 类就完全是对应着上面的语法图去实现了，遇到`非终结符`便递归，逻辑非常清晰，可以参看[源码](/img/post/simple-calculator/files/calc.tar.gz)
 
 生成中间代码后，在后端实现一个 `Calculator` 去计算中间代码，更加简单，自上往下递归计算即可。
 
@@ -164,14 +164,3 @@ Pattern.compile("^.*Exception:").matcher(e1.toString()).replaceAll("")
 3. 使用递归可以十分灵活、方便
 4. 计算器的功能很容易扩展
 5. 功能分块可单独测试，便于查错、维护，特别是对于此类逻辑复杂的系统
-
-
-[expression]: /img/post/simple-calculator/expression.png
-[term]:       /img/post/simple-calculator/term.png
-[factor]:     /img/post/simple-calculator/factor.png
-[number]:     /img/post/simple-calculator/number.png
-[integer]:    /img/post/simple-calculator/integer.png
-[ast]:        /img/post/simple-calculator/ast.png
-[nest]:       /img/post/simple-calculator/nest.png
-[PPT]:        /img/post/simple-calculator/files/calculator.ppt
-[source]:     /img/post/simple-calculator/files/calc.tar.gz
