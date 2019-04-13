@@ -251,6 +251,10 @@ $postify-color-link: $link;
   width: 100%;
 }
 
+.is-justified-center {
+  justify-content: center !important;
+}
+
 @media screen and (max-width: $mobile) {
   .is-marginless-mobile {
     margin: 0 !important;
