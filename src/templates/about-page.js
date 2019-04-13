@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
+import Utterances from '../components/Utterances'
 import Content, { HTMLContent } from '../components/Content'
 import DoubanShow from '../components/DoubanShow'
 
@@ -43,6 +44,7 @@ const AboutPage = ({ data }) => {
         <p className='has-text-centered'>最近个人推荐的一些书和影视作品：</p>
         <DoubanShow />
       </section>
+      <Utterances />
     </Layout>
   )
 }

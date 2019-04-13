@@ -5,6 +5,7 @@ import Trianglify from 'trianglify'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
 import Quote from '../components/Quote'
+import Utterances from '../components/Utterances'
 import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
@@ -76,24 +77,6 @@ const BlogPost = ({ data, pageContext }) => {
     },
     [bgUrl]
   )
-
-  const utterancesRef = useRef()
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return
-    }
-    const el = document.createElement('script')
-    el.src = 'https://utteranc.es/client.js'
-    el.async = true
-    el.setAttribute('repo', 'crimx/blog-comments')
-    el.setAttribute('issue-term', 'pathname')
-    el.setAttribute('label', 'Comment')
-    el.setAttribute('theme', 'github-light')
-    el.setAttribute('crossOrigin', 'anonymous')
-    if (utterancesRef.current) {
-      utterancesRef.current.appendChild(el)
-    }
-  }, [])
 
   return (
     <Layout
@@ -185,7 +168,7 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
-      <section key='utterances' className='section' ref={utterancesRef} />
+      <Utterances />
     </Layout>
   )
 }
