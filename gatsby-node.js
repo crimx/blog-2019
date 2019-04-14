@@ -71,6 +71,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node) // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {
+    // GraphQL query over frontmatter.draft might throw error if
+    // no post has this field.
+    createNodeField({
+      node,
+      name: 'draft',
+      value: Boolean(node.frontmatter.draft)
+    })
+
     // Jeykll style post path
     const filepath = createFilePath({ node, getNode })
     createNodeField({
