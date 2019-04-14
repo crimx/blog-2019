@@ -248,24 +248,21 @@ You can drag the iframe square below:
     }
     .drag-iframe {
       position: absolute;
-      width: 200px;
-      height: 200px;
+      width: 200px !important;
+      height: 200px !important;
     }
   </style>
   <iframe class="drag-iframe" src="/img/post/drag-iframe.html" frameborder="0"></iframe>
   <script type="text/javascript">
     ;(function () {
       var pageMouseX, pageMouseY
-
       var $iframe = document.querySelector('.drag-iframe')
       var frameTop = 0
       var frameLeft = 0
       $iframe.style.top = frameTop + 'px'
       $iframe.style.left = frameLeft + 'px'
-
       window.addEventListener('message', evt => {
         const data = evt.data
-
         switch (data.msg) {
           case 'SALADICT_DRAG_START':
             handleDragStart(data.mouseX, data.mouseY)
@@ -278,36 +275,29 @@ You can drag the iframe square below:
             break
         }
       })
-
       function handleDragStart (mouseX, mouseY) {
         pageMouseX = frameLeft + mouseX
         pageMouseY = frameTop + mouseY
-
         document.addEventListener('mouseup', handleDragEnd)
         document.addEventListener('mousemove', handlePageMousemove)
       }
-
       function handleDragEnd () {
         document.removeEventListener('mouseup', handleDragEnd)
         document.removeEventListener('mousemove', handlePageMousemove)
       }
-
       function handleFrameMousemove (offsetX, offsetY) {
         frameTop += offsetY
         frameLeft += offsetX
         $iframe.style.top = frameTop + 'px'
         $iframe.style.left = frameLeft + 'px'
-
         pageMouseX += offsetX
         pageMouseY += offsetY
       }
-
       function handlePageMousemove (evt) {
         frameTop += evt.clientX - pageMouseX
         frameLeft += evt.clientY - pageMouseY
         $iframe.style.top = frameTop + 'px'
         $iframe.style.left = frameLeft + 'px'
-
         pageMouseX = evt.clientX
         pageMouseY = evt.clientY
       }
