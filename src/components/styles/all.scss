@@ -185,6 +185,21 @@ $postify-color-link: $link;
   }
 }
 
+.auto-anchor {
+  border: none !important;
+  position: relative;
+  top: -3px;
+  
+  svg {
+    fill: $text;
+    
+    @media screen and (max-width: $tablet) {
+      fill: $grey-light;
+      visibility: visible !important;
+    }
+  }
+}
+
 /*------------------------------------*\
   #MODIFIERS
 \*------------------------------------*/

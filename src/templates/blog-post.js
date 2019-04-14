@@ -19,7 +19,8 @@ export const BlogPostTemplate = ({
 
   return (
     <section className='section'>
-      <div className='container'>
+      {/* fix gatsby-remark-autolink-headers scrolling, let offsetParent be body */}
+      <div className='container' style={{ position: 'static' }}>
         <div className='columns'>
           <div className='column is-10 is-offset-1 is-paddingless-top'>
             <div className='postify'>
@@ -65,34 +66,28 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({ data: { site, post }, pageContext }) => {
   const { title, description, date, quote, tags } = post.frontmatter
 
-  const bgUrl = useMemo(
-    () => {
-      if (typeof window === 'undefined') {
-        return ''
-      }
-      return window.URL.createObjectURL(
-        dataURItoBlob(
-          Trianglify({
-            width: window.innerWidth,
-            height: window.innerHeight,
-            seed: title
-          }).png()
-        )
+  const bgUrl = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return ''
+    }
+    return window.URL.createObjectURL(
+      dataURItoBlob(
+        Trianglify({
+          width: window.innerWidth,
+          height: window.innerHeight,
+          seed: title
+        }).png()
       )
-    },
-    [title]
-  )
+    )
+  }, [title])
 
   // fix Trianglify first render
   const bgRef = useRef()
-  useEffect(
-    () => {
-      if (bgRef.current) {
-        bgRef.current.style.backgroundImage = `url('${bgUrl}')`
-      }
-    },
-    [bgUrl]
-  )
+  useEffect(() => {
+    if (bgRef.current) {
+      bgRef.current.style.backgroundImage = `url('${bgUrl}')`
+    }
+  }, [bgUrl])
 
   return (
     <Layout

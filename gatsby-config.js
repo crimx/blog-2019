@@ -43,6 +43,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              offsetY: '100',
+              className: 'auto-anchor'
+            }
+          }, // make sure before prismjs
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               showLineNumbers: true,
