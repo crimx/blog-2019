@@ -101,7 +101,7 @@ if (bigBgSrc) {
 A live example:
 
 <p>
-  <iframe height='437' scrolling='no' title='Progressive background-image Loading' src="" src='//codepen.io/straybugs/embed/preview/gLJyXW/?height=437&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%; height: 437px;'>See the Pen <a href='http://codepen.io/straybugs/pen/gLJyXW/'>Progressive background-image Loading</a> by CrimX (<a href='http://codepen.io/straybugs'>@straybugs</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+  <iframe height='437' scrolling='no' title='Progressive background-image Loading' src='//codepen.io/straybugs/embed/preview/gLJyXW/?height=437&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%; height: 437px;'>See the Pen <a href='http://codepen.io/straybugs/pen/gLJyXW/'>Progressive background-image Loading</a> by CrimX (<a href='http://codepen.io/straybugs'>@straybugs</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
 </p>
 
 ## No-js
