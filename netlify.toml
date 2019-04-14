@@ -4,3 +4,7 @@
 [build.environment]
   YARN_VERSION = "1.9.4"
   YARN_FLAGS = "--no-ignore-optional"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "sameorigin"
