@@ -30,7 +30,7 @@ As the article above mentioned:
 But the default blur effect still feels blocky.
 
 <p>
-  <img src="/img/post/pexels-photo-24343-blocky-thumbnail.jpg" alt="thumbnail" style="width: 100%;">
+  <img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABMAHgMBIgACEQEDEQH/xABoAAADAQEAAAAAAAAAAAAAAAAAAwYECBAAAgEDBAIBBQAAAAAAAAAAAQMCAAQSBQYRITGBFBMiM1FxAQADAQEAAAAAAAAAAAAAAAACAwQAAREAAgMBAAAAAAAAAAAAAAAAAAECESES/9oADAMBAAIRAxEAPwCWVtNVrBU7/V0Kg7kQC0sblx6A5p13tjTQuDbPVl4kgSzjKPX7AIpNzq+P01TvVXYUcoSxl0f6a26buvUbRQUp1uBkTxKfAo30DaLrbWyLOVtJivgXqpQwkzMDIiqnTdiaSu2iltikwgPt4kJVBWO6vjsVdsuNIWwHgyWsy6PkERA7qst992j1QkE2jAYgywnLjKkSUr0amqw58FOj59UUVUTjY+PVbrf8dFFdMf/Z" alt="thumbnail" style="width: 100%;">
 </p>
 
 To make it smoother, I applied blur effect to the thumbnails while generating them, using [GraphicsMagick for node](https://github.com/aheckmann/gm):
@@ -60,7 +60,7 @@ gm(coverPath)
 ```
 
 <p>
-  <img src="/images/cover/thumbnails/pexels-photo-24343.jpg" alt="thumbnail" style="width: 100%;">
+  <img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABMAHgMBIgACEQEDEQH/xABiAAADAQEAAAAAAAAAAAAAAAAABAYDCBAAAQQCAgMBAAAAAAAAAAAAAQACAwQGERIhBTFBFAEAAwEAAAAAAAAAAAAAAAAAAAIDBBEAAgMBAAAAAAAAAAAAAAAAAAECESES/9oADAMBAAIRAxEAPwCXixaOsGutW2tDvWgmZsVrODH1rGwT30lbHlNBrHTNlDfRTVDI54WhgMet/U76FtF3jeHVnV+jHIHN0dlVlLDKEcPB8TdD12oHx+Vfm4SmWFh+gKrgzuu+MEcCVGSlelU1WHPwWrUIWkzmrSdJ+FzhGNEoQgD/2Q==" alt="thumbnail" style="width: 100%;">
 </p>
 
 This looks acceptable to me. No need for a canvas or blur function. Already felt relieved! :smile:
