@@ -168,7 +168,7 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
-      <Utterances />
+      <Utterances slug={post.fields.slug} />
     </Layout>
   )
 }
@@ -206,6 +206,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
