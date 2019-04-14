@@ -8,7 +8,13 @@ import Quote from '../components/Quote'
 import Utterances from '../components/Utterances'
 import Content, { HTMLContent } from '../components/Content'
 
-export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
+export const BlogPostTemplate = ({
+  content,
+  description,
+  tableOfContents,
+  contentComponent,
+  tags
+}) => {
   const PostContent = contentComponent || Content
 
   return (
@@ -16,7 +22,16 @@ export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
       <div className='container'>
         <div className='columns'>
           <div className='column is-10 is-offset-1 is-paddingless-top'>
-            <PostContent className='postify' content={content} />
+            <div className='postify'>
+              {!!description && <p>{description}</p>}
+              {!!tableOfContents && (
+                <div
+                  className='post-toc'
+                  dangerouslySetInnerHTML={{ __html: tableOfContents }}
+                />
+              )}
+              <PostContent content={content} />
+            </div>
             {tags && tags.length ? (
               <div style={{ marginTop: `2rem` }}>
                 <div className='tags'>
@@ -41,13 +56,14 @@ export const BlogPostTemplate = ({ content, contentComponent, tags }) => {
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
+  description: PropTypes.node,
+  tableOfContents: PropTypes.string,
   contentComponent: PropTypes.func,
   tags: PropTypes.arrayOf(PropTypes.string)
 }
 
-const BlogPost = ({ data, pageContext }) => {
-  const { markdownRemark: post } = data
-  const { title, description, date } = post.frontmatter
+const BlogPost = ({ data: { site, post }, pageContext }) => {
+  const { title, description, date, quote, tags } = post.frontmatter
 
   const bgUrl = useMemo(
     () => {
@@ -80,7 +96,7 @@ const BlogPost = ({ data, pageContext }) => {
 
   return (
     <Layout
-      title={`${title} | ${data.site.siteMetadata.title}`}
+      title={`${title} | ${site.siteMetadata.title}`}
       description={`${description}`}
     >
       <section
@@ -122,14 +138,19 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
+
       <section className='section'>
-        <Quote quote={post.frontmatter.quote} />
+        <Quote quote={quote} />
       </section>
+
       <BlogPostTemplate
         content={post.html}
+        description={description}
+        tableOfContents={post.tableOfContents}
         contentComponent={HTMLContent}
-        tags={post.frontmatter.tags}
+        tags={tags}
       />
+
       <section className='section'>
         <div className='columns'>
           <div className='column'>
@@ -168,6 +189,7 @@ const BlogPost = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
+
       <Utterances slug={post.fields.slug} />
     </Layout>
   )
@@ -203,9 +225,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    post: markdownRemark(id: { eq: $id }) {
       id
       html
+      tableOfContents
       fields {
         slug
       }

@@ -171,6 +171,20 @@ $postify-color-link: $link;
   }
 }
 
+.post-toc {
+  padding: 1em;
+  border-left: 5px solid $grey-lighter;
+  background: $light;
+  
+  p, ul {
+    margin: 0;
+  }
+  
+  @media screen and (max-width: $mobile) {
+    padding: 1em 0;
+  }
+}
+
 /*------------------------------------*\
   #MODIFIERS
 \*------------------------------------*/
