@@ -1,5 +1,5 @@
 ---
-title: 在博客上使用 Emoji
+title: 在 Hexo 博客上使用 Emoji
 tags:
   - Image
   - Emoji
@@ -15,6 +15,8 @@ date: 2016-12-23T12:00:00.000Z
 layout: blog-post
 description: ''
 ---
+
+（🚨 本博客已换用其它技术栈，Github Emoji 在 Hexo 上的效果见 [2018 版](https://blog2018.crimx.com/2016/12/23/emojis-for-blog/)）
 
 
 Emoji 都要出电影了，博客怎么能不用。奇怪的是 hexo 上只有一个插件，要在文中添加 tag，还不支持 hexo3 。我不太喜欢在 markdown 里加各种 tag，所以就打算自己再写个插件。
