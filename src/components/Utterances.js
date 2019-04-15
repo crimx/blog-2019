@@ -18,7 +18,10 @@ const Utterances = React.memo(({ slug }) => {
     if (utterancesRef.current) {
       utterancesRef.current.appendChild(el)
     }
-  }, [slug])
+    return () => {
+      el.remove()
+    }
+  })
 
   return <section key='utterances' className='section' ref={utterancesRef} />
 })

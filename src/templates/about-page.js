@@ -44,7 +44,7 @@ const AboutPage = ({ data }) => {
         <p className='has-text-centered'>最近个人推荐的一些书和影视作品：</p>
         <DoubanShow />
       </section>
-      <Utterances />
+      <Utterances slug='about' />
     </Layout>
   )
 }
