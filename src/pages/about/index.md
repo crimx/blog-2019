@@ -13,7 +13,7 @@ title: 关于本博客及作者
 
 LOGO 图标使用 illustrator 设计，社交图案采用 [NViconsLib 2](https://github.com/nullice/NViconsLib_Silhouette) ，使用 [Boxy SVG](https://boxy-svg.com/) 手工编辑，利用 [IcoMoon](https://icomoon.io/) 合并以及 [SVGOMG](https://jakearchibald.github.io/svgomg/) 压缩。
 
-# 奸视作者
+# 视奸作者
 
 <style>
 svg.social {
