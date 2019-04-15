@@ -254,7 +254,7 @@ $postify-color-link: $link;
 
 .hero.has-trianglify {
   @extend .is-fullheight;
-  background: no-repeat center / cover;
+  position: relative;
   
   .navbar-item:hover {
     background-color: rgba($white, 0.3) !important;
@@ -268,6 +268,11 @@ $postify-color-link: $link;
     background-color: rgba($white, 0.7) !important;
   }
   
+  .hero-foot {
+    position: relative;
+    z-index: 10;
+  }
+
   @media screen and (min-width: $tablet) {
     min-height: auto;
 
@@ -277,6 +282,23 @@ $postify-color-link: $link;
       padding-top: 9rem;
     }
   }
+}
+
+.trianglify-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  animation: 0.5s trianglify-show ;
+}
+
+@keyframes trianglify-show {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 // do not push element down on touch device

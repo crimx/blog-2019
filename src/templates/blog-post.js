@@ -1,7 +1,7 @@
-import React, { useMemo, useEffect, useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import Trianglify from 'trianglify'
+import Trianglify from '../components/Trianglify'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
 import Quote from '../components/Quote'
@@ -66,39 +66,13 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({ data: { site, post }, pageContext }) => {
   const { title, description, date, quote, tags } = post.frontmatter
 
-  const bgUrl = useMemo(() => {
-    if (typeof window === 'undefined') {
-      return ''
-    }
-    return window.URL.createObjectURL(
-      dataURItoBlob(
-        Trianglify({
-          width: window.innerWidth,
-          height: window.innerHeight,
-          seed: title
-        }).png()
-      )
-    )
-  }, [title])
-
-  // fix Trianglify first render
-  const bgRef = useRef()
-  useEffect(() => {
-    if (bgRef.current) {
-      bgRef.current.style.backgroundImage = `url('${bgUrl}')`
-    }
-  }, [bgUrl])
-
   return (
     <Layout
       title={`${title} | ${site.siteMetadata.title}`}
       description={`${description}`}
     >
-      <section
-        ref={bgRef}
-        className='hero is-medium has-trianglify'
-        style={{ backgroundImage: `url('${bgUrl}')` }}
-      >
+      <section className='hero is-medium has-trianglify'>
+        <Trianglify title={title} />
         <div className='hero-head'>
           <Navbar />
         </div>
@@ -241,26 +215,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// https://gist.github.com/davoclavo/4424731
-function dataURItoBlob (dataURI) {
-  // convert base64 to raw binary data held in a string
-  var byteString = atob(dataURI.split(',')[1])
-
-  // separate out the mime component
-  var mimeString = dataURI
-    .split(',')[0]
-    .split(':')[1]
-    .split(';')[0]
-
-  // write the bytes of the string to an ArrayBuffer
-  var arrayBuffer = new ArrayBuffer(byteString.length)
-  var _ia = new Uint8Array(arrayBuffer)
-  for (var i = 0; i < byteString.length; i++) {
-    _ia[i] = byteString.charCodeAt(i)
-  }
-
-  var dataView = new DataView(arrayBuffer)
-  var blob = new Blob([dataView], { type: mimeString })
-  return blob
-}
