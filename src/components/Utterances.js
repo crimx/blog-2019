@@ -21,9 +21,9 @@ const Utterances = React.memo(({ slug }) => {
     return () => {
       el.remove()
     }
-  })
+  }, [slug])
 
-  return <section key='utterances' className='section' ref={utterancesRef} />
+  return <section key={slug} className='section' ref={utterancesRef} />
 })
 
 Utterances.propTypes = {
