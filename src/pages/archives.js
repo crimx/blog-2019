@@ -61,7 +61,10 @@ export const archivesPageQuery = graphql`
     }
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { layout: { eq: "blog-post" } } }
+      filter: {
+        fields: { draft: { ne: true } }
+        frontmatter: { layout: { eq: "blog-post" } }
+      }
     ) {
       edges {
         node {

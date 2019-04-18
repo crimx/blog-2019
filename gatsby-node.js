@@ -44,7 +44,11 @@ exports.createPages = ({ actions, graphql }) => {
     }))
 
     options
-      .filter((_, i) => edges[i].node.frontmatter.layout === 'blog-post')
+      .filter(
+        (_, i) =>
+          edges[i].node.frontmatter.layout === 'blog-post' &&
+          !edges[i].node.fields.draft
+      )
       .forEach((option, i, blogPostOptions) => {
         option.context.prev =
           i === 0
