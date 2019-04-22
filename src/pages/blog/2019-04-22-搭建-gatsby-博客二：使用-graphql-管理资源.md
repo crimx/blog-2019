@@ -12,7 +12,7 @@ quote:
   content: >-
     “I love those connections that make this big old world feel like a little
     village.”
-  source: .
+  source: ''
 tags:
   - Gatsby
   - Blog
