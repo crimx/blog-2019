@@ -69,7 +69,7 @@ const BlogPost = ({ data: { site, post }, pageContext }) => {
   return (
     <Layout
       title={`${title} | ${site.siteMetadata.title}`}
-      description={`${description}`}
+      description={`${description || post.excerpt}`}
     >
       <section className='hero is-medium has-trianglify'>
         <Trianglify title={title} />
@@ -197,6 +197,7 @@ export const pageQuery = graphql`
     post: markdownRemark(id: { eq: $id }) {
       id
       html
+      excerpt(pruneLength: 200)
       tableOfContents
       fields {
         slug
