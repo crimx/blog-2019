@@ -36,7 +36,8 @@ const Quote = React.memo(({ quote }) => {
           {hasFoot && (
             <div className='has-text-right'>
               {'— '}
-              {!!author && <span className='is-uppercase'>{author}, </span>}
+              {!!author && <span className='is-uppercase'>{author}</span>}
+              {!!(author && source) && ', '}
               {!!source && <span className='is-italic'>{source}</span>}
             </div>
           )}
