@@ -9,15 +9,7 @@ import DoubanShow from '../components/DoubanShow'
 import logo from '../img/logo.svg'
 
 const IndexPage = ({
-  data: {
-    site,
-    heroimg,
-    tagJavaScript,
-    tagSource,
-    tagSpec,
-    tagTotal,
-    latestPosts
-  }
+  data: { heroimg, tagJavaScript, tagSource, tagSpec, tagTotal, latestPosts }
 }) => {
   return (
     <Layout>
@@ -50,7 +42,13 @@ const IndexPage = ({
 
       <section className='section'>
         <div className='container'>
-          <Quote quote={site.siteMetadata.quote} />
+          <Quote
+            quote={{
+              content: `"How do you know I'm mad?" said Alice.\n"You must be," said the Cat, "or you wouldn't have come here."`,
+              author: `Lewis Carroll`,
+              source: `Alice's Adventures in Wonderland`
+            }}
+          />
         </div>
       </section>
 
@@ -110,6 +108,18 @@ const IndexPage = ({
 
       <section className='section'>
         <div className='container'>
+          <Quote
+            quote={{
+              content: `"Either write something worth reading or do something worth writing."`,
+              author: `Benjamin Franklin`,
+              source: ``
+            }}
+          />
+        </div>
+      </section>
+
+      <section className='section'>
+        <div className='container'>
           <div className='content'>
             <p className='has-text-centered'>最近文章：</p>
             {latestPosts.edges.map(({ node: post }) => (
@@ -149,11 +159,6 @@ const IndexPage = ({
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        quote: Quote.propTypes.quote
-      })
-    }),
     heroimg: PropTypes.shape({
       fluid: PropTypes.any
     }),
@@ -179,15 +184,6 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    site {
-      siteMetadata {
-        quote {
-          content
-          author
-          source
-        }
-      }
-    }
     heroimg: file(relativePath: { eq: "hero/pexels-photo-19031.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1920) {
