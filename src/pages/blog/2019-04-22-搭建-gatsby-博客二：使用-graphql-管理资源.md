@@ -3,10 +3,7 @@ layout: blog-post
 draft: false
 date: 2019-04-22T12:23:21.961Z
 title: 搭建 Gatsby 博客二：使用 GraphQL 管理资源
-description: >-
-  Gatsby 是一个 React 建站框架。在使用 Gatsby 搭建了一个小博客后，非常喜欢其管理数据的方式。然而，尽管上手可以非常快，对于刚开始用
-  Gatsby 的人来说，理解其基本思想是个小门槛。官方提供了非常详细的教程，甚至有点过于基础了，本文面向有 React 基础，没有使用过 Gatsby 和
-  GraphQL 的读者分享一份笔记。
+description: Gatsby 默认使用了 GraphQL 来管理资源。本文将谈谈这么做的优点以及当中的一些坑。
 quote:
   author: Gina Bellman
   content: >-
