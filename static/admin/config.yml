@@ -21,9 +21,9 @@ collections:
         name: "quote"
         widget: "object"
         fields:
-          - {label: "Content", name: "content", widget: "text", default: ""}
-          - {label: "Author", name: "author", widget: "string", default: ""}
-          - {label: "Source", name: "source", widget: "string", default: ""}
+          - {label: "Content", name: "content", widget: "text", default: "", required: false}
+          - {label: "Author", name: "author", widget: "string", default: "", required: false}
+          - {label: "Source", name: "source", widget: "string", default: "", required: false}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}     
 
