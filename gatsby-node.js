@@ -43,6 +43,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }))
 
+    // add prev & next pages
     options
       .filter(
         (_, i) =>
@@ -66,7 +67,16 @@ exports.createPages = ({ actions, graphql }) => {
             }
       })
 
-    options.forEach(option => createPage(option))
+    // render everthing except post drafts
+    options
+      .filter(
+        (_, i) =>
+          !(
+            edges[i].node.frontmatter.layout === 'blog-post' &&
+            edges[i].node.fields.draft
+          )
+      )
+      .forEach(option => createPage(option))
   })
 }
 
