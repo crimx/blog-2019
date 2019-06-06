@@ -40,7 +40,7 @@ tags:
 
 其实我是在没搞清原因的情况下实现了这个功能，但正好这周的 Wait But Why 谈到了 [Everything You Should Know About Sound](https://waitbutwhy.com/2016/03/sound.html)。其中一张图我认为非常适合解释了。
 
-![]()
+![Wave Pitch](/img/wave-2.gif)
 
 可以看到，当我们把声音加快的时候，其实是把波长（Wavelength）压短了，于是产生了更高的音高（Pitch）。要想保持原来的音高，我们必须要把波长拉长（叫 Pitch Stretch），但因为整个的时间缩短了，所以中间必须要丢弃一些信息。
 
