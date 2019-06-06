@@ -157,7 +157,7 @@ initWavesurfer = () => {
 
 同步播放速率很简单，在设置 Wavesurfer 播放速率时同时设置 SoundTouch 的即可。
 
-```
+```javascript
 this.wavesurfer.setPlaybackRate(speed)
 this.soundTouch.tempo = speed
 ```
