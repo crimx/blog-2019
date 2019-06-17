@@ -1,17 +1,18 @@
 ---
+layout: blog-post
+draft: false
+date: 2015-03-09T12:00:00.000Z
 title: ES6 随笔：函数与块级作用域
+description: '阅读 Kyle Simpson 《You don''t JS: Scope and Closures》第三章过程中的一些随笔'
+quote:
+  author: ''
+  content: ''
+  source: ''
 tags:
   - Understanding JavaScript
   - JavaScript
   - Scope
   - 闲读规范
-quote:
-  content: '阅读 Kyle Simpson 《You don''t JS: Scope and Closures》第三章过程中的一些随笔'
-  author: ''
-  source: ''
-date: 2015-03-09T12:00:00.000Z
-layout: blog-post
-description: ''
 ---
 
 作用域
