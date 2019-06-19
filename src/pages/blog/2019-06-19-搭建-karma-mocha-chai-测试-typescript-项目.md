@@ -22,18 +22,18 @@ tags:
 
 ## 为什么要自行搭建
 
-许多框架 CLI 和脚手架都可以自动配置好测试框架，为什么我们还要自行搭建？除去研究学习的原因，整个搭建起来其实也没有想象中的困难，每个工具各司其职给了我们很大的自由去挑选合适的组合。预设的方案一般很难符合每个项目的需要，像 Neutrino 脚手架就意识到这一点，Neutrino 9 虽然依然号称“零配置”，但其角色已从项目零配置转移到工具零配置上。了解工具的基本原理，基本是配置脚手架来也会更得心应手。
+许多框架 CLI 和脚手架都可以自动配置好测试框架，为什么我们还要自行搭建？除去研究学习的原因，整个搭建起来其实也没有想象中的困难，每个工具各司其职给了我们很大的自由去挑选合适的组合。预设的方案一般很难符合每个项目的需要，像 Neutrino 脚手架就意识到这一点，Neutrino 9 虽然依然号称“零配置”，但其角色已从项目零配置转移到工具零配置上。了解工具的基本原理，即便是配置脚手架来也会更得心应手。
 
 ## 出场角色介绍
 
 首先我们来了解一下将要出场的几个工具是干什么的：
 
-- [Karma](https://karma-runner.github.io)：负责统筹整个测试流程，获取测试，在多个真实设备上运行，对结果进行分析处理。
-- [Mocha](https://mochajs.org/)：测试框架，提供 API 编写测试。
-- [Chai](https://www.chaijs.com/)：BDD / TDD 风格断言库，提供了语义化的方式编写断言。
-- [Istanbul](https://istanbul.js.org/)：跟踪代码运行路径，计算测试覆盖率。
-- [Coveralls](https://coveralls.io/)：测试覆盖率分析服务。
-- [Travis CI ](https://travis-ci.org/)：持续集成服务，每次提交 commit 即可触发测试。
+* [Karma](https://karma-runner.github.io)：负责统筹整个测试流程，获取测试，在多个真实设备上运行，对结果进行分析处理。
+* [Mocha](https://mochajs.org/)：测试框架，提供 API 编写测试。
+* [Chai](https://www.chaijs.com/)：BDD / TDD 风格断言库，提供了语义化的方式编写断言。
+* [Istanbul](https://istanbul.js.org/)：跟踪代码运行路径，计算测试覆盖率。
+* [Coveralls](https://coveralls.io/)：测试覆盖率分析服务。
+* [Travis CI ](https://travis-ci.org/)：持续集成服务，每次提交 commit 即可触发测试。
 
 ## 配置 Karma
 
@@ -55,8 +55,8 @@ module.exports = config => {
 }
 ```
 
-- `singleRun`：在本地我们通常希望测试跑完之后 Karma 依然继续检测文件变化重跑，但在 CI 上则必须完成结束测试，否测 CI 会一直等待 Karma 直到超时。
-- `mime`： Karma 不认识 TypeScript 文件，我们得告诉它。
+* `singleRun`：在本地我们通常希望测试跑完之后 Karma 依然继续检测文件变化重跑，但在 CI 上则必须完成结束测试，否测 CI 会一直等待 Karma 直到超时。
+* `mime`： Karma 不认识 TypeScript 文件，我们得告诉它。
 
 ### 添加浏览器
 
@@ -85,6 +85,8 @@ module.exports = config => {
 ```bash
 npm install --dev mocha chai karam karma-mocha karma-chai @types/chai @types/mocha
 ```
+
+植入全局变量就不必反复 `import`。
 
 ```javascript{7}
 module.exports = config => {
@@ -198,7 +200,7 @@ module.exports = config => {
 
 #### 添加测试入口
 
-使用 Webpack 之后我们就不需要 Karam 来匹配文件，而是交给 Webpack 处理，只留一个入口给 Karam 即可。
+使用 Webpack 之后我们就不需要 Karma 来匹配文件，而是交给 Webpack 处理，只留一个入口给 Karma 即可。
 
 ```javascript{11,13-15}
 module.exports = config => {
@@ -272,7 +274,7 @@ npm install --dev karma-nyan-reporter
 
 ![karma-nyan-reporter](https://raw.githubusercontent.com/dgarlitt/image-repo/master/karma-nyan-reporter/v0.2.2/karma-nyan-reporter-error-output.png)
 
-如果不希望出现动画，只需把 `renderOnRunCompleteOnly` 关掉即可。
+如果不希望出现动画，只开启 `renderOnRunCompleteOnly` 即可。
 
 ```javascript{17，49-51}
 module.exports = config => {
@@ -338,7 +340,7 @@ npm install --dev istanbul-instrumenter-loader karma-coverage-istanbul-reporter
 
 整合 Istanbul 主要分两步，先在 Webpack 中配置 instrumenter 以植入计数，最后配置汇报器汇报结果。
 
-```javascript{17，42-50，58-72}
+```javascript{17,42-50,58-72}
 module.exports = config => {
   config.set({
     singleRun: !!process.env.CI,
@@ -421,11 +423,11 @@ module.exports = config => {
 
 注意这里我们配置汇报器输出的类型，
 
-- `text-summary` 主要方便我们在命令行中看到统计。
-- `html` 可以 `coverage/` 目录下浏览各个源代码的覆盖情况。
-- `lcovonly` 主要为了给其它工具使用，比如接下来要配置的 Coveralls。
+* `text-summary` 主要方便我们在命令行中看到统计。
+* `html` 可以 `coverage/` 目录下浏览各个源代码的覆盖情况。
+* `lcovonly` 主要为了给其它工具使用，比如接下来要配置的 Coveralls。
 
-如果你的源码中有针对浏览器特性或坑的代码，每个浏览器测试出来的覆盖率可能会不一样，通过 `combineBrowserReports` 即可合并覆盖率。
+如果你的源码中有针对浏览器特性或坑的代码，那么每个浏览器测试出来的覆盖率可能会不一样，通过 `combineBrowserReports` 即可合并覆盖率。
 
 如果需要分开查看，给 `dir` 路径提供 `/%browser%/` 会自动分开生成各个浏览器的结果。
 
@@ -443,7 +445,7 @@ npm install --dev karma-coveralls
 
 接下来我们可以将覆盖率上传到各种服务中进行分析，这里我们以 Coveralls 为例。
 
-注意我们配置了只在 CI 上上传，因为前面配置了 Karam 在本地会常开着不停跑测试。
+注意我们配置了只在 CI 上上传，因为我们前面配置了 Karma 在本地会常开着不停跑测试。
 
 ```javascript{17-19,76-79}
 module.exports = config => {
@@ -560,8 +562,8 @@ script:
 
 其中浏览器可以根据插件的文档选择不同版本。
 
-- Chrome: <https://docs.travis-ci.com/user/chrome>
-- Firefox: <https://docs.travis-ci.com/user/firefox>
+* Chrome: <https://docs.travis-ci.com/user/chrome>
+* Firefox: <https://docs.travis-ci.com/user/firefox>
 
 ## 添加 Badges 到 README
 
@@ -579,4 +581,4 @@ script:
 
 ## 最后
 
-这就是搭建 Karma 全家桶的基本流程，现在只需从在 `test` 下新建 `**/*.spec.ts` 即可开始编写测试。由于每个工具各司其职，要更换或者添加新功能都非常容易。希望本文能帮助大家减少编写测试的困难，舒服地进行开发，产出更多可靠的项目。
+这就是搭建 Karma 全家桶的基本流程，现在只需在 `test` 下新建 `**/*.spec.ts` 即可开始编写测试。由于每个工具各司其职，要更换或者添加新功能都非常容易。希望本文能帮助大家减少编写测试的困难，舒服地进行开发，产出更多可靠的项目。
