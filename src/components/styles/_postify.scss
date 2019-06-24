@@ -60,10 +60,6 @@ $postify-color-header-counter: #888 !default;
     }
   }
 
-  a:hover code {
-    border-bottom: 1px solid;
-  }
-
   // 防止 a>img hover 时下划线位置错位
   // 如果 img 不需要下划线可以直接：
   // a img {
