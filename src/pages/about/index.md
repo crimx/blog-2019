@@ -54,7 +54,7 @@ svg.social {
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-zhihu-circle" />
 </svg>
-[知乎](https://fanfou.com/crimx) 安利自己的[沙拉查词](https://github.com/crimx/ext-saladict)。
+[知乎](https://www.zhihu.com/people/straybugs) 安利自己的[沙拉查词](https://github.com/crimx/ext-saladict)。
 
 
 在
