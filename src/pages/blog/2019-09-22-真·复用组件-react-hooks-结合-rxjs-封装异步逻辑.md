@@ -72,17 +72,17 @@ function useAPI(keyword) {
 
 如这个例子中，因为 Promise 不能取消，我们需要一个中间变量 `isStale` 来取消已经过时的结果，以避免早先的查询因为网络延迟问题而覆盖了后面的结果。
 
-这只是个简单的例子，对于更复杂的，按过去的思路，将这类逻辑放到 Redux 中处理是一种符合习惯的解决方法，但如果这些状态不被其它组件所共用，那么我们其实是在用一种两边不讨好的方式在开发。一来引入了额外的全局状态和仓库连接步骤，二来这个组件又不能方便地被独立复用。
+这只是个简单的例子，对于更复杂的，按过去的思路，将这类逻辑放到 Redux 中处理是一种符合习惯的解决方法。但如果这些状态不被其它组件所共用，那么我们其实是在用一种两边不讨好的方式在开发：一来引入了额外的全局状态和仓库连接步骤，二来这个组件又不能方便地被独立复用。
 
 我们需要一种更省事的方式来封装异步逻辑。
 
 ## RxJS：？？有人叫我？
 
-异步处理是存在已久的问题，业内早已有许多成熟的解决方案，RxJS 便是其中之一。但如果你没有接触过 RxJS 或者是新手，在搜集资料的时候可能会发现一种两极分化的情况：一部分人在赞美安利，一部分人在极力劝退。
+异步处理是存在已久的问题，业内早已有许多成熟的解决方案，RxJS 便是其中之一。但如果你没有接触过 RxJS 或者是新手，在搜集资料的时候可能会发现一种两极分化的情况：一部分人在惊叹赞美，一部分人在极力劝退。
 
 这是因为响应式编程用了一种常理以外的角度观察世界，也是笔者在[《理解 RxJS 》](https://blog.crimx.com/2018/02/16/understanding-rxjs/)中提到的，一种上帝的四维视野：逻辑不再存在于时间之中，而是在时间之外。我们不需要维护什么中间状态，每一个时间点上的状态我们都可以直接得到。
 
-当然代码还是在我们的四维世界里执行的。RxJS 有点像电子游戏，只会渲染你需要的部分。比如我们告诉 RxJS 需要时间点 1 和 4 的状态，那么到时间点 4 的时候，我们就有了 1 和 4 的状态，不需要的状态就被丢弃了，但在我们看来，它们都还在，就像游戏中我们不在的其它场景。
+当然代码还是在我们的四维世界里执行的。RxJS 有点像电子游戏，只会渲染你需要的部分。比如我们告诉 RxJS 需要时间点 1 和 4 的状态，那么到时间点 4 的时候，我们就有了 1 和 4 的状态，不需要的状态就被丢弃了，但在我们看来，它们都还在，就像游戏中我们看不见的其它场景。
 
 对于部分人来说这可能比较难接受，就像有人晕车、有人晕船，觉得不适有的人会选择再适应一下，有的人会更换其它适合自己的方式，有的人会劝大家不要坐车坐船，见仁见智。
 
@@ -100,11 +100,11 @@ function useAPI(keyword) {
 
 [rxjs-hooks](https://github.com/LeetCode-OpenSource/rxjs-hooks) 提供了两个 API 转换 Observable，可以与 React 的 props, state 和事件交互。在使用过程中发现两个 API 设计得过于复杂，不仅使用起来不方便，由于 hooks 不能可选且顺序必须固定的特性，复杂的接口代表了一些没用到的资源会存在空转状态。
 
-最后因为一个无法解决的 issue 笔者不得不弃用而重新设计一个轮子 [observable-hooks](https://github.com/crimx/observable-hooks)。
+最后因为一个无法解决的 [issue](https://github.com/LeetCode-OpenSource/rxjs-hooks/issues/60) 笔者不得不弃用而重新设计一个轮子 [observable-hooks](https://github.com/crimx/observable-hooks)。
 
 ![observable-hooks](https://github.com/crimx/observable-hooks/raw/master/observable-hooks.png?raw=true)
 
-这个超小的库是一个全方位的解决方案，通过明确、简化每个 API 的职责解决了空转的问题并提高了性能。React 与 RxJS 交接的地方都交给 hooks 处理，这保持了 Observable 的纯净性，允许逻辑像 Epic 一样分离测试，所以如果项目本身就用了 redux-observable 的话会非常方便。
+这个超小的库是一个全方位的解决方案，通过简化每个 API 的职责解决了空转的问题并提高了性能。React 与 RxJS 交接的地方都交给 hooks 处理，这保持了 Observable 的纯净性，允许逻辑像 Epic 一样分离测试，所以如果项目本身就用了 redux-observable 的话会非常方便。
 
 一个简单的例子，检测用户的输入状态，停下来一秒后复原。
 
@@ -138,11 +138,21 @@ const App = () => {
 
 可以看到异步逻辑是纯净的，能够被剥离出来进行复用或测试。`useObservableState` 是一个简单封装避免了初始化触发额外的 setState ，核心的三个 API 是
 
-- `use-observable` 从变量变化到 Observable 。
-- `use-observable-callback` 从事件回调到 OBservable 。
-- `use-subscription` 从 Observable 回到外部。
+- [`use-observable`](https://www.crimx.com/observable-hooks/modules/_use_observable_.html) 从变量变化到 Observable ，以及对各种 Observables 进行各种处理（merge, concat...）。
+- [`use-observable-callback`](https://www.crimx.com/observable-hooks/modules/_use_observable_callback_.html) 从事件回调到 Observable 。
+- [`use-subscription`](https://www.crimx.com/observable-hooks/modules/_use_subscription_.html) 从 Observable 回到外部。
 
 通过这三个 API 的组合就可以达到 React 和 RxJS 的无缝交接，利用 Thunk 保证了 Observable 只会被创建一遍，每次都返回同样的变量。
+
+更多的例子：
+
+Pomodoro Timer Example
+
+<iframe src="https://codesandbox.io/embed/github/crimx/observable-hooks/tree/master/examples/pomodoro-timer?autoresize=1&fontsize=14&hidenavigation=1&view=preview" title="pomodoro-timer" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+Typeahead Example
+
+<iframe src="https://codesandbox.io/embed/github/crimx/observable-hooks/tree/master/examples/typeahead?autoresize=1&fontsize=14&hidenavigation=1&view=preview" title="typeahead" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## 最后
 
