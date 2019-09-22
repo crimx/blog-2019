@@ -86,7 +86,7 @@ function useAPI(keyword) {
 
 对于部分人来说这可能比较难接受，就像有人晕车、有人晕船，觉得不适有的人会选择再适应一下，有的人会更换其它适合自己的方式，有的人会劝大家不要坐车坐船，见仁见智。
 
-在笔者看来，这是一种正确的异步处理方式。虽然有初期的学习成本，但这个是一次性的。从 RxJS 的角度看，时间点上的状态可以像数组一样处理，这带来了极大的遍历。
+在笔者看来，这是一种正确的异步处理方式。虽然有初期的学习成本，但这个是一次性的。从 RxJS 的角度看，时间点上的状态可以像数组一样处理，这带来了极大的便利。
 
 ## React 中使用 RxJS
 
@@ -104,7 +104,7 @@ function useAPI(keyword) {
 
 ![observable-hooks](https://github.com/crimx/observable-hooks/raw/master/observable-hooks.png?raw=true)
 
-这个超小的库是一个全方位的解决方案，通过拆分 API 解决了空转的问题并提高了性能。React 与 RxJS 交接的地方都交给 hooks 处理，这保持了 Observable 的纯净性，允许逻辑像 Epic 一样分离测试，所以如果本身就用 redux-observable 的话会非常方便。
+这个超小的库是一个全方位的解决方案，通过明确、简化每个 API 的职责解决了空转的问题并提高了性能。React 与 RxJS 交接的地方都交给 hooks 处理，这保持了 Observable 的纯净性，允许逻辑像 Epic 一样分离测试，所以如果项目本身就用了 redux-observable 的话会非常方便。
 
 一个简单的例子，检测用户的输入状态，停下来一秒后复原。
 
@@ -136,7 +136,7 @@ const App = () => {
 }
 ```
 
-`useObservableState` 是一个简单封装避免了初始化触发额外的 setState ，核心的三个 API 是
+可以看到异步逻辑是纯净的，能够被剥离出来进行复用或测试。`useObservableState` 是一个简单封装避免了初始化触发额外的 setState ，核心的三个 API 是
 
 - `use-observable` 从变量变化到 Observable 。
 - `use-observable-callback` 从事件回调到 OBservable 。
@@ -146,4 +146,4 @@ const App = () => {
 
 ## 最后
 
-现在 [observable-hooks](https://github.com/crimx/observable-hooks) 已经非常稳定，文档测试齐全，在[「沙拉查词 7」](https://saladict.crimx.com/)中已经大量使用实现复杂的组件动效，效果非常不错。如果你像我一样喜欢 React 和 RxJS ，强烈建议你试一试！
+现在 [observable-hooks](https://github.com/crimx/observable-hooks) 已经非常稳定，文档测试齐全，在[「沙拉查词 7」](https://saladict.crimx.com/)中已经大量使用实现复杂的组件动效，效果非常不错。如果你像我一样喜欢 React 和 RxJS 的话强烈建议试一试！
