@@ -45,11 +45,6 @@ svg.social {
   <use xlink:href="/img/symbol-defs.svg#icon-netease-music-circle" />
 </svg>
 [云村](https://music.163.com/user/home?id=44711994) 读读英文诗，
-给
-<svg class="social">
-  <use xlink:href="/img/symbol-defs.svg#icon-douban-circle" />
-</svg>
-[豆瓣](https://www.douban.com/people/jaward) 贡献观影数据，
 上
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-zhihu-circle" />
@@ -61,12 +56,8 @@ svg.social {
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-twitter-circle" />
 </svg>
-[Twitter](https://twitter.com/straybugs/) 刷技术八卦，
+[Twitter](https://twitter.com/straybugs/) 刷刷技术八卦，
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-weibo-circle" />
 </svg>
-[微博](https://www.weibo.com/bananajaward) 刷娱乐八卦，
-<svg class="social">
-  <use xlink:href="/img/symbol-defs.svg#icon-fanfou-circle" />
-</svg>
-[饭否](https://fanfou.com/crimx) 刷私人八卦。
+[微博](https://www.weibo.com/bananajaward) 刷刷娱乐八卦，
