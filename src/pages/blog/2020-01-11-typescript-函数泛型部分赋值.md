@@ -13,7 +13,7 @@ tags:
 ---
 ## 问题
 
-首先，我们知道 TypeScript 很早（两年）前就实现了带默认值的泛型（generic）
+首先，我们知道 TypeScript 很早（2017）前就实现了带默认值的泛型（generic）
 
 ```typescript
 type Foo<T = number> = T
@@ -53,7 +53,7 @@ function identity<T>(arg: T): T {
 const text = identity('text')
 
 // $ExpectType 'text'
-typeof num
+typeof text
 ```
 
 有时如果泛型不在参数中，那么使用时我们就要提供
@@ -76,7 +76,7 @@ function fetchData<TResult, TKey extends keyof TResult>(
 ): Promise<TResult[TKey]> {
   return fetch(src)
     .then(r => r.json())
-    .then(result => result[key])
+    .then(json => json[key])
 }
 
 // Argument of type '"result"' is not assignable to parameter of type 'never'.ts(2345)
@@ -98,7 +98,7 @@ fetchData<{ result: string }>('http://blog.crimx.com/json', 'result')
 
 ```typescript
 fetchJSON<{ result: string }>('http://blog.crimx.com/json')
-  .then(result => result[key])
+  .then(json => json[key])
 ```
 
 可以用柯里化的方式解决
@@ -110,7 +110,7 @@ function fetchData<TResult>(
   return key =>
     fetch(src)
       .then(r => r.json())
-      .then(result => result[key])
+      .then(json => json[key])
 }
 
 // $ExpectType Promise<string>
