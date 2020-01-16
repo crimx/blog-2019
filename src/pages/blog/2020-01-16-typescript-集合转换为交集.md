@@ -53,7 +53,7 @@ T extends U ? X : Y
 
 但与普通编程语言的三元运算不一样，TypeScript 中还有这么一个特性，叫分布式条件类型（Distributive Conditional Types）。
 
-当 `T` 是一个集合（Union）的时候，三元运算是对集合中每个元素进行运算，而不是对 `T` 这个整体进行运算。可以类比为数组中的 `map`，对集合进行映射，这相当于往类型系统中加入了遍历功能。
+当 `T` 是一个集合（Union）的时候，三元运算是对集合中每个元素进行运算，而不是对 `T` 这个整体进行运算。可以类比为数组中的 `map`，对集合进行映射，这相当于往类型系统中加入了遍历功能，并且结合 `never` 也得到了 `filter` 的功能。
 
 所以现在 TypeScript 类型系统中有了变量（泛型）、条件控制、循环控制，越来越像一门编程语言了……
 
@@ -95,7 +95,7 @@ type Result = ReturnType<((arg: string) => number) | (() => 'blog.crimx.com')>
 type Parameter<T> = T extends (arg: infer P) => any ? P : any
 ```
 
-这里也是一样，最后我们会得到一个参数的集合。
+其实也是一样，最后我们会得到一个参数的集合。
 
 ```typescript
 type A = { a: number }
