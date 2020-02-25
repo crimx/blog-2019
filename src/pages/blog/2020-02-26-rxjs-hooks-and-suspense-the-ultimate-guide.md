@@ -101,11 +101,17 @@ Logic lives in pure function which improves reusability and testability.
 
 See the docs for more about [core concepts](https://observable-hooks.js.org/guide/core-concepts.html) and [API](https://observable-hooks.js.org/api/).
 
+Pomodoro Timer Example:
+
+<iframe title="Pomodoro Timer Example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" src="https://codesandbox.io/embed/github/crimx/observable-hooks/tree/master/examples/pomodoro-timer?autoresize=1&amp;fontsize=14&amp;hidenavigation=1&amp;theme=dark" style="width:100%;height:500px;border:1px solid #ebedf0;background-color:#ebedf0;border-radius:4px;overflow:hidden;"></iframe>
+
 ## Suspense
 
 With the experimental [React Suspense](https://reactjs.org/docs/concurrent-mode-suspense.html) asynchronous resources can be read declaratively like it has already been resolved.
 
 Since Suspense is just a mechanism it is possible to convert Observables into Suspense compatible resources ([benefits of observable as data source](https://observable-hooks.js.org/guide/render-as-you-fetch-suspense.html#benefits-of-observable-as-data-source)).
+
+<iframe title="Render-as-You-Fetch (using Suspense)" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" src="https://codesandbox.io/embed/github/crimx/observable-hooks/tree/master/examples/suspense?autoresize=1&amp;fontsize=14&amp;hidenavigation=1&amp;theme=dark" style="width:100%;height:500px;border:1px solid #ebedf0;background-color:#ebedf0;border-radius:4px;overflow:hidden;"></iframe>
 
 Observable-hooks offers [`ObservableResource`](https://observable-hooks.js.org/api/suspense.html#observableresource) to do the trick.
 
