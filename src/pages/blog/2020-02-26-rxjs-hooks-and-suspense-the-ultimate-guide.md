@@ -15,11 +15,13 @@ tags:
   - JavaScript
   - React
 ---
+(This post is also on [medium](https://medium.com/@straybugs/rxjs-hooks-and-suspense-the-ultimate-guide-6d4f61dc224c))
+
 ## Why Hooks
 
-### "This" is the way
-
 Stateful logic is unavoidable in any React project. In early days we used the `state` property in Class-Components to hold stateful values.
+
+### "This" isn't the way
 
 But quickly we realized that it is prone to lose track of states in "this" way. So we divided Components into stateful(smart) Components and stateless(dumb) Components. Stateful logic is delegated to parent stateful Components to keep most Components stateless.
 
