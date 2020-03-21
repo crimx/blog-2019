@@ -38,7 +38,7 @@ tags:
 ## 配置 Karma
 
 ```bash
-npm install --save karma
+npm install -D karma
 ```
 
 要使用 Karma 只需要配置一个文件即可，理论上放哪里都行，方便起见我们在项目根目录新建 `karma.config.js`。
@@ -61,7 +61,7 @@ module.exports = config => {
 ### 添加浏览器
 
 ```bash
-npm install --dev karma-chrome-launcher karma-firefox-launcher
+npm install -D karma-chrome-launcher karma-firefox-launcher
 ```
 
 根据你的需求添加即可。
@@ -83,7 +83,7 @@ module.exports = config => {
 ### 添加 Mocha 和 Chai
 
 ```bash
-npm install --dev mocha chai karam karma-mocha karma-chai @types/chai @types/mocha
+npm install -D mocha chai karam karma-mocha karma-chai @types/chai @types/mocha
 ```
 
 植入全局变量就不必反复 `import`。
@@ -139,7 +139,7 @@ declare global {
 ### 使用 Karma Webpack
 
 ```bash
-npm install --save webpack karma-webpack ts-loader @types/webpack-env
+npm install -D webpack karma-webpack ts-loader @types/webpack-env
 ```
 
 我们将使用 karma-webpack 对 TypeScript 进行打包。
@@ -267,7 +267,7 @@ sources.keys().forEach(sources)
 ### 添加超萌的喵喵汇报器
 
 ```bash
-npm install --dev karma-nyan-reporter
+npm install -D karma-nyan-reporter
 ```
 
 接下来我们配置最后一步，汇报测试结果。这里不得不提这个萌萌的 [karma-nyan-reporter](https://github.com/dgarlitt/karma-nyan-reporter)
@@ -335,7 +335,7 @@ module.exports = config => {
 ### 添加 Istanbul 汇报覆盖率
 
 ```bash
-npm install --dev istanbul-instrumenter-loader karma-coverage-istanbul-reporter
+npm install -D istanbul-instrumenter-loader karma-coverage-istanbul-reporter
 ```
 
 整合 Istanbul 主要分两步，先在 Webpack 中配置 instrumenter 以植入计数，最后配置汇报器汇报结果。
@@ -440,7 +440,7 @@ module.exports = config => {
 ### 上传覆盖率到 Coveralls
 
 ```bash
-npm install --dev karma-coveralls
+npm install -D karma-coveralls
 ```
 
 接下来我们可以将覆盖率上传到各种服务中进行分析，这里我们以 Coveralls 为例。
