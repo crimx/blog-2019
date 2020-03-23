@@ -35,6 +35,11 @@ svg.social {
 </svg>
 [Github](https://github.com/crimx/) 上。
 
+他有时也会在
+<svg class="social">
+  <use xlink:href="/img/symbol-defs.svg#icon-segmentfault-circle" />
+</svg>
+[Segmentfault](https://segmentfault.com/u/crimx) 上帮助网友解决编程问题。
 偶尔会在
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-codepen-circle" />
@@ -60,4 +65,4 @@ svg.social {
 <svg class="social">
   <use xlink:href="/img/symbol-defs.svg#icon-weibo-circle" />
 </svg>
-[微博](https://www.weibo.com/bananajaward) 刷刷娱乐八卦，
+[微博](https://www.weibo.com/bananajaward) 刷刷娱乐八卦。
