@@ -2,7 +2,8 @@
   publish = "public"
   command = "npm run build"
 [build.environment]
-  YARN_VERSION = "1.9.4"
+  NODE_VERSION = "12.13.0"
+  YARN_VERSION = "1.22.0"
   YARN_FLAGS = "--no-ignore-optional"
 [[headers]]
   for = "/*"
