@@ -14,7 +14,7 @@ tags:
 ---
 ## 问题
 
-由于浏览器扩展有特殊的权限限制，许多前端的开发工具都无法直接派上用场，如之前我解决了[热更新](https://github.com/crimx/webextensions-emulator/)和[自动填写](https://github.com/crimx/neutrino-webextension)的问题。现在我们继续突破下个影响性能的问题：动态加载分块。
+由于浏览器扩展有特殊的权限限制，许多前端的开发工具都无法直接派上用场，如之前我解决了[热更新](https://github.com/crimx/webextensions-emulator/)和[分块自动填写到清单](https://github.com/crimx/neutrino-webextension)的问题。现在我们继续突破下个影响性能的问题：动态加载分块。
 
 Webpack 支持 `import()` 自动分块并异步加载，这对于大型应用来说是非常有用的功能。虽然浏览器扩展的源文件都在本地，但对于大型应用来说静态加载依然会浪费了不少内存。那么为什么浏览器扩展不支持异步加载呢？这就需要理解 Webpack 是怎么处理的。
 
