@@ -96,10 +96,24 @@ if (needChunkOnDemandLoadingCode(chunk)) {
 
 从而利用 `runtime.getURL` 来计算扩展资源路径。
 
-## 最后
+## 小坑
 
 可以通过 `publicPath` 来控制根路径。
 
 注意去除 `@babel/plugin-syntax-dynamic-import` 等插件以免 `import()` 被转换掉。
 
-完整修改见[这里](https://github.com/crimx/webpack-target-webextension/blob/master/lib/WebExtMainTemplatePlugin.js)。
+Webpack 一些设置的[默认值](https://v4.webpack.js.org/configuration/resolve/#resolvemainfields)依赖 `target` 来判断，所以需存手动设置：
+
+```js
+module.exports = {
+  resolve: {
+    mainFields: ['browser', 'module', 'main'],
+    aliasFields: ['browser']
+  },
+  output: {
+    globalObject: 'window'
+  }
+}
+```
+
+完整修改见[这里](https://github.com/crimx/webpack-target-webextension)。
