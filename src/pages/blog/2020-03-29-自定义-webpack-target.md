@@ -102,7 +102,7 @@ if (needChunkOnDemandLoadingCode(chunk)) {
 
 注意去除 `@babel/plugin-syntax-dynamic-import` 等插件以免 `import()` 被转换掉。
 
-Webpack 一些设置的[默认值](https://v4.webpack.js.org/configuration/resolve/#resolvemainfields)依赖 `target` 来判断，所以需存手动设置：
+Webpack 一些设置的[默认值](https://v4.webpack.js.org/configuration/resolve/#resolvemainfields)依赖 `target` 来判断，所以需要手动设置：
 
 ```js
 module.exports = {
