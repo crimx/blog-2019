@@ -1,3 +1,12 @@
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require('dotenv').config({
+  path: `.env.${activeEnv}`
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://blog.crimx.com',
@@ -126,7 +135,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-49163616-3'
+        trackingId: process.env.GA_TRACKING_ID
       }
     },
     {
