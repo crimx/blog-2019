@@ -185,6 +185,11 @@ $postify-color-link: $link;
 
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
+  
+  @media screen and (max-width: $mobile) {
+    margin: 0 -1.5rem -0.4rem;
+    font-size: 14px;
+  }
 }
 
 .post-toc {
