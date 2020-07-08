@@ -54,14 +54,14 @@ module.exports = {
             }
           }, // make sure before prismjs
           {
+            resolve: 'gatsby-remark-code-titles'
+          }, // make sure before prismjs
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               showLineNumbers: true,
               noInlineHighlight: true
             }
-          },
-          {
-            resolve: 'gatsby-remark-code-titles'
           },
           {
             resolve: 'gatsby-remark-relative-images',
