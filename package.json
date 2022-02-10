@@ -32,7 +32,7 @@
     "lodash": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.4",
     "netlify-cms-app": "^2.9.6",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "parcel-bundler": "^1.12.4",
     "prismjs": "^1.19.0",
     "prop-types": "^15.6.0",
